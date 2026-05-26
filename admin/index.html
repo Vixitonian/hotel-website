@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — Grandeur Hotel</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-login-wrap">
+    <div class="admin-login-card">
+      <div class="nav-logo" style="align-items:center; margin-bottom:32px;">
+        <span class="name" style="color:var(--charcoal); font-size:2rem;">Grandeur</span>
+        <span class="tagline" style="color:var(--gold);">Admin Portal</span>
+      </div>
+
+      <h2>Sign In</h2>
+      <p class="sub">Enter your admin password to continue.</p>
+
+      <div id="loginAlert"></div>
+
+      <form id="loginForm" class="admin-form" novalidate>
+        <div class="form-group" style="text-align:left;">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required autofocus />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;">
+          Sign In
+        </button>
+      </form>
+
+      <p style="margin-top:24px; font-size:0.78rem; color:var(--muted);">
+        Default password: <strong>grandeur2025</strong><br>
+        <em>Change via <code>.htaccess</code> in production.</em>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Simple client-side password check.
+    // In production: replace with server-side session authentication.
+    const ADMIN_PASS = 'grandeur2025';
+
+    // Auto-redirect if already authenticated
+    if (sessionStorage.getItem('admin_auth') === 'true') {
+      window.location.href = 'dashboard.html';
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pass = document.getElementById('password').value;
+      const alert = document.getElementById('loginAlert');
+
+      if (pass === ADMIN_PASS) {
+        sessionStorage.setItem('admin_auth', 'true');
+        window.location.href = 'dashboard.html';
+      } else {
+        alert.innerHTML = '<div class="alert alert-error">⚠️ Incorrect password. Please try again.</div>';
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+      }
+    });
+  </script>
+</body>
+</html>

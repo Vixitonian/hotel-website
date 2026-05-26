@@ -1,0 +1,58 @@
+{
+  "room_001": {
+    "id": "room_001",
+    "name": "Classic Deluxe Room",
+    "type": "Deluxe",
+    "price": 85000,
+    "capacity": 2,
+    "size": "32 m²",
+    "bed": "King",
+    "description": "Elegant and cosy, the Classic Deluxe features warm tones, a plush king bed, and a marble-clad en-suite bathroom with a soaking tub.",
+    "amenities": ["Free Wi-Fi", "Flat-screen TV", "Air Conditioning", "Mini Bar", "Room Service"],
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  },
+  "room_002": {
+    "id": "room_002",
+    "name": "Superior Garden View",
+    "type": "Superior",
+    "price": 120000,
+    "capacity": 2,
+    "size": "44 m²",
+    "bed": "King",
+    "description": "Wake up to verdant gardens from your private balcony. Spacious interiors blending contemporary design with Nigerian textile accents.",
+    "amenities": ["Private Balcony", "Free Wi-Fi", "Nespresso Machine", "Bathtub & Shower", "Pillow Menu"],
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  },
+  "room_003": {
+    "id": "room_003",
+    "name": "Junior Suite",
+    "type": "Suite",
+    "price": 195000,
+    "capacity": 3,
+    "size": "65 m²",
+    "bed": "King",
+    "description": "A separate living area, dining nook, and a master bedroom with floor-to-ceiling windows make this suite a preferred choice for extended stays.",
+    "amenities": ["Separate Living Room", "Dining Area", "Kitchenette", "Walk-in Wardrobe", "Butler Service"],
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  },
+  "room_004": {
+    "id": "room_004",
+    "name": "Presidential Suite",
+    "type": "Presidential",
+    "price": 450000,
+    "capacity": 4,
+    "size": "120 m²",
+    "bed": "Super King",
+    "description": "The pinnacle of luxury. Two bedrooms, a grand living room, a private chef's kitchen, and panoramic views across Abuja's skyline await you.",
+    "amenities": ["2 Bedrooms", "Grand Living Room", "Private Kitchen", "Panoramic View", "24hr Butler", "Airport Transfer"],
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  }
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Grandeur Hotel</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="name">Grandeur</span>
+        <span class="tagline">Hotel &amp; Suites</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-ghost btn-sm nav-book">Book Now</a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Reach Us</span>
+      <h1>Contact &amp; Reservations</h1>
+      <p>Whether you are planning a stay, a celebration, or simply have a question — we are here for you.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info column -->
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <div class="contact-info-item">
+            <div class="icon">📍</div>
+            <div class="text">
+              <h4>Address</h4>
+              <p>5 Luxury Avenue, Maitama District<br>Abuja, FCT, Nigeria</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon">📞</div>
+            <div class="text">
+              <h4>Phone</h4>
+              <p>+234 800 123 4567<br>+234 800 765 4321</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon">✉️</div>
+            <div class="text">
+              <h4>Email</h4>
+              <p>hello@grandeurhotel.ng<br>reservations@grandeurhotel.ng</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon">🕐</div>
+            <div class="text">
+              <h4>Front Desk Hours</h4>
+              <p>24 hours a day, 7 days a week</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link" title="Instagram">📷</a>
+            <a href="#" class="social-link" title="Facebook">📘</a>
+            <a href="#" class="social-link" title="Twitter/X">🐦</a>
+            <a href="#" class="social-link" title="WhatsApp">💬</a>
+          </div>
+        </div>
+
+        <!-- Form column -->
+        <div>
+          <div id="formSuccess" class="form-success">
+            <div class="check">✅</div>
+            <h3>Thank You!</h3>
+            <p style="color:var(--muted);margin:12px auto 0;">Your message has been received. Our team will be in touch within 24 hours.</p>
+          </div>
+
+          <form id="contactForm" class="admin-form" novalidate>
+            <div id="formAlert"></div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Emeka" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Adeyemi" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+234 800 000 0000" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a topic…</option>
+                <option value="reservation">Room Reservation</option>
+                <option value="dining">Restaurant / Dining</option>
+                <option value="events">Events &amp; Conferences</option>
+                <option value="spa">Spa &amp; Wellness</option>
+                <option value="feedback">Feedback</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="checkin">Check-in Date</label>
+                <input type="date" id="checkin" name="checkin" />
+              </div>
+              <div class="form-group">
+                <label for="checkout">Check-out Date</label>
+                <input type="date" id="checkout" name="checkout" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Tell us how we can help…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+              Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:16px;display:flex;">
+            <span class="name" style="color:#fff;">Grandeur</span>
+            <span class="tagline">Hotel &amp; Suites</span>
+          </a>
+          <p>A landmark of refined hospitality in Abuja since 1968.</p>
+        </div>
+        <div class="footer-col"><h5>Navigate</h5><ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div class="footer-col"><h5>Contact</h5><ul>
+          <li><a href="tel:+2348001234567">+234 800 123 4567</a></li>
+          <li><a href="mailto:hello@grandeurhotel.ng">hello@grandeurhotel.ng</a></li>
+        </ul></div>
+        <div class="footer-col"><h5>Services</h5><ul>
+          <li><a href="#">Airport Transfer</a></li>
+          <li><a href="#">Spa &amp; Wellness</a></li>
+          <li><a href="#">Event Hosting</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Grandeur Hotel &amp; Suites.</span>
+        <span>Made in Nigeria 🇳🇬</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navbar').classList.add('scrolled');
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Pre-fill room from query param
+    const params = new URLSearchParams(window.location.search);
+    const room = params.get('room');
+    if (room) {
+      const subj = document.getElementById('subject');
+      subj.value = 'reservation';
+      document.getElementById('message').value = `I would like to enquire about the "${room}" room.`;
+    }
+
+    // Form submit
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type=submit]');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      // Simulate a send (replace with actual fetch to a mail endpoint)
+      setTimeout(() => {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').classList.add('visible');
+      }, 1200);
+    });
+  </script>
+</body>
+</html>

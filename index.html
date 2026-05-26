@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grandeur Hotel — Where Luxury Meets Heritage</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="name">Grandeur</span>
+        <span class="tagline">Hotel &amp; Suites</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-ghost btn-sm btn-book nav-book">Book Now</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <span class="eyebrow">Est. 1968 · Abuja, Nigeria</span>
+      <h1>Where Luxury<br>Meets <em>Heritage</em></h1>
+      <p class="hero-subtitle">An intimate retreat where timeless elegance and warm Nigerian hospitality converge to create memories that last a lifetime.</p>
+      <div class="hero-actions">
+        <a href="rooms.html" class="btn btn-primary">Explore Rooms</a>
+        <a href="menu.html" class="btn btn-ghost">View Menu</a>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ── Features Strip ─────────────────────────────── -->
+  <section class="features-strip">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item">
+          <span class="feature-icon">🌿</span>
+          <div>
+            <h4>Lush Gardens</h4>
+            <p>3 acres of manicured tropical grounds</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🍽️</span>
+          <div>
+            <h4>Fine Dining</h4>
+            <p>Award-winning cuisine, local &amp; international</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🏊</span>
+          <div>
+            <h4>Infinity Pool</h4>
+            <p>Open daily from 6 AM to 10 PM</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✨</span>
+          <div>
+            <h4>Luxury Spa</h4>
+            <p>Holistic treatments &amp; wellness rituals</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Featured Rooms ─────────────────────────────── -->
+  <section class="section" style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Accommodations</span>
+        <h2>Our Finest Rooms</h2>
+        <div class="divider"></div>
+        <p>Every room is a sanctuary — thoughtfully furnished, impeccably appointed, and designed for your deepest comfort.</p>
+      </div>
+      <div class="rooms-grid" id="homeRoomsGrid">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Loading rooms…</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: 48px;">
+        <a href="rooms.html" class="btn btn-outline">View All Rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Quote ──────────────────────────────────────── -->
+  <section class="section" style="background: var(--charcoal2); color: #fff; text-align: center;">
+    <div class="container" style="max-width: 700px;">
+      <div class="divider"></div>
+      <h2 style="font-style:italic; font-size: clamp(1.8rem, 3vw, 3rem); margin: 32px 0; color: #fff;">
+        "Hospitality is not to change people, but to offer them space where change can take place."
+      </h2>
+      <span class="eyebrow" style="color: var(--gold-lt);">— Henri Nouwen</span>
+      <div class="divider" style="margin-top: 32px;"></div>
+    </div>
+  </section>
+
+  <!-- ── Featured Menu ──────────────────────────────── -->
+  <section class="section" style="background: var(--ivory);">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Culinary Experience</span>
+        <h2>From Our Kitchen</h2>
+        <div class="divider"></div>
+        <p>Fresh ingredients, masterful technique, and bold flavours that celebrate the richness of Nigerian and continental cuisine.</p>
+      </div>
+      <div class="menu-grid" id="homeMenuGrid">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Loading menu…</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: 48px;">
+        <a href="menu.html" class="btn btn-outline">Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:16px; display:flex;">
+            <span class="name" style="color:#fff;">Grandeur</span>
+            <span class="tagline">Hotel &amp; Suites</span>
+          </a>
+          <p>A landmark of refined hospitality in the heart of Abuja since 1968.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rooms.html">Rooms &amp; Suites</a></li>
+            <li><a href="menu.html">Restaurant</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#">Airport Transfer</a></li>
+            <li><a href="#">Spa &amp; Wellness</a></li>
+            <li><a href="#">Event Hosting</a></li>
+            <li><a href="#">Business Centre</a></li>
+            <li><a href="#">Concierge</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+2348001234567">+234 800 123 4567</a></li>
+            <li><a href="mailto:hello@grandeurhotel.ng">hello@grandeurhotel.ng</a></li>
+            <li><a href="#">5 Luxury Ave, Maitama,<br>Abuja, FCT</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Grandeur Hotel &amp; Suites. All rights reserved.</span>
+        <span>Crafted with care in Nigeria 🇳🇬</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile nav toggle
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Load preview rooms (max 3)
+    fetch('api/rooms.php?action=list')
+      .then(r => r.json())
+      .then(data => {
+        const grid = document.getElementById('homeRoomsGrid');
+        const rooms = (data.rooms || []).slice(0, 3);
+        if (!rooms.length) {
+          grid.innerHTML = '<div class="empty-state"><div class="icon">🛏️</div><p>No rooms listed yet.</p></div>';
+          return;
+        }
+        grid.innerHTML = rooms.map(r => buildRoomCard(r)).join('');
+      })
+      .catch(() => {
+        document.getElementById('homeRoomsGrid').innerHTML =
+          '<div class="empty-state"><div class="icon">🛏️</div><p>Rooms unavailable right now.</p></div>';
+      });
+
+    // Load preview menu (max 4)
+    fetch('api/menu.php?action=list')
+      .then(r => r.json())
+      .then(data => {
+        const grid = document.getElementById('homeMenuGrid');
+        const items = (data.items || []).slice(0, 4);
+        if (!items.length) {
+          grid.innerHTML = '<div class="empty-state"><div class="icon">🍽️</div><p>Menu items coming soon.</p></div>';
+          return;
+        }
+        grid.innerHTML = items.map(m => buildMenuCard(m)).join('');
+      })
+      .catch(() => {
+        document.getElementById('homeMenuGrid').innerHTML =
+          '<div class="empty-state"><div class="icon">🍽️</div><p>Menu unavailable right now.</p></div>';
+      });
+
+    function buildRoomCard(r) {
+      const img = r.image
+        ? `<img src="images/rooms/${r.image}" alt="${r.name}" loading="lazy" />`
+        : `<div class="placeholder-img">🛏️</div>`;
+      return `
+        <div class="room-card">
+          <div class="room-card-img">${img}<span class="room-badge">${r.type || 'Room'}</span></div>
+          <div class="room-card-body">
+            <h3>${r.name}</h3>
+            <div class="room-meta">
+              <span>👤 ${r.capacity || 2} Guests</span>
+              <span>📐 ${r.size || '—'}</span>
+            </div>
+            <p class="room-desc">${r.description || ''}</p>
+            <div class="room-card-footer">
+              <div class="room-price">
+                <span class="amount">₦${Number(r.price).toLocaleString()}</span>
+                <span class="per">per night</span>
+              </div>
+              <a href="contact.html" class="btn btn-primary btn-sm">Book</a>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function buildMenuCard(m) {
+      const img = m.image
+        ? `<img src="images/food/${m.image}" alt="${m.name}" loading="lazy" />`
+        : `<div class="placeholder-img">🍽️</div>`;
+      return `
+        <div class="menu-card">
+          <div class="menu-card-img">${img}</div>
+          <div class="menu-card-body">
+            <h4>${m.name}</h4>
+            <p>${m.description || ''}</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">₦${Number(m.price).toLocaleString()}</span>
+              <span class="menu-cat">${m.category || 'Main'}</span>
+            </div>
+          </div>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

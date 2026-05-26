@@ -1,0 +1,62 @@
+{
+  "item_001": {
+    "id": "item_001",
+    "name": "Grandeur Full Breakfast",
+    "category": "Breakfast",
+    "price": 12500,
+    "description": "Eggs your way, grilled tomatoes, sautéed mushrooms, crispy turkey bacon, toasted sourdough, and freshly squeezed orange juice.",
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  },
+  "item_002": {
+    "id": "item_002",
+    "name": "Suya Skewers",
+    "category": "Starters",
+    "price": 8500,
+    "description": "Tender beef marinated in our signature suya spice blend, grilled over an open flame and served with pickled onion and tomato salsa.",
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  },
+  "item_003": {
+    "id": "item_003",
+    "name": "Egusi Soup & Pounded Yam",
+    "category": "Main",
+    "price": 18000,
+    "description": "A rich, aromatic Egusi soup slow-cooked with assorted meats and leafy vegetables, served with silky hand-pounded yam.",
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  },
+  "item_004": {
+    "id": "item_004",
+    "name": "Pan-Seared Tilapia",
+    "category": "Main",
+    "price": 22000,
+    "description": "Fresh Tilapia fillet seared to golden perfection, served on a bed of jollof coconut rice with grilled plantain and herb butter.",
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  },
+  "item_005": {
+    "id": "item_005",
+    "name": "Chin-Chin Cheesecake",
+    "category": "Dessert",
+    "price": 7500,
+    "description": "A modern Nigerian twist on a classic — creamy vanilla cheesecake on a buttery chin-chin crust, drizzled with tiger nut caramel.",
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  },
+  "item_006": {
+    "id": "item_006",
+    "name": "Zobo Royal",
+    "category": "Drinks",
+    "price": 4500,
+    "description": "Hibiscus flowers steeped with ginger, cloves, and a hint of pineapple — refreshingly served over crushed ice with a sugared rim.",
+    "image": null,
+    "available": true,
+    "created_at": "2025-01-01T08:00:00+01:00"
+  }
+}

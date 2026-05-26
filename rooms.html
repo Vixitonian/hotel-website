@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooms &amp; Suites — Grandeur Hotel</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="name">Grandeur</span>
+        <span class="tagline">Hotel &amp; Suites</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="rooms.html" class="active">Rooms</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-ghost btn-sm nav-book">Book Now</a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Accommodations</span>
+      <h1>Rooms &amp; Suites</h1>
+      <p>From intimate deluxe rooms to sprawling presidential suites — each space is a world of its own.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Filter bar -->
+      <div class="menu-filter" id="roomFilter">
+        <button class="active" data-filter="all">All Rooms</button>
+        <button data-filter="Deluxe">Deluxe</button>
+        <button data-filter="Superior">Superior</button>
+        <button data-filter="Suite">Suite</button>
+        <button data-filter="Presidential">Presidential</button>
+      </div>
+
+      <div class="rooms-grid" id="roomsGrid">
+        <div class="loading-state" style="grid-column:1/-1;">
+          <div class="spinner"></div>
+          <p>Loading rooms…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:16px;display:flex;">
+            <span class="name" style="color:#fff;">Grandeur</span>
+            <span class="tagline">Hotel &amp; Suites</span>
+          </a>
+          <p>A landmark of refined hospitality in the heart of Abuja since 1968.</p>
+        </div>
+        <div class="footer-col"><h5>Navigate</h5><ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div class="footer-col"><h5>Contact</h5><ul>
+          <li><a href="tel:+2348001234567">+234 800 123 4567</a></li>
+          <li><a href="mailto:hello@grandeurhotel.ng">hello@grandeurhotel.ng</a></li>
+        </ul></div>
+        <div class="footer-col"><h5>Services</h5><ul>
+          <li><a href="#">Airport Transfer</a></li>
+          <li><a href="#">Spa &amp; Wellness</a></li>
+          <li><a href="#">Event Hosting</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Grandeur Hotel &amp; Suites.</span>
+        <span>Made in Nigeria 🇳🇬</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rooms.js"></script>
+  <script>
+    document.getElementById('navbar').classList.add('scrolled');
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Filter
+    let allRooms = [];
+    document.querySelectorAll('#roomFilter button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#roomFilter button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        const filtered = f === 'all' ? allRooms : allRooms.filter(r => r.type === f);
+        renderRooms(filtered);
+      });
+    });
+
+    loadRooms().then(rooms => { allRooms = rooms; renderRooms(rooms); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# .htaccess — Optional HTTP Basic Auth for /admin/
+# To activate: uncomment the lines below and generate a .htpasswd file.
+# Run: htpasswd -c /path/to/.htpasswd admin
+#
+# AuthType Basic
+# AuthName "Grandeur Admin"
+# AuthUserFile /path/to/hotel-website/admin/.htpasswd
+# Require valid-user
+
+# Deny direct access to .htpasswd
+<Files ".htpasswd">
+  Require all denied
+</Files>
+
+# Prevent directory listing
+Options -Indexes

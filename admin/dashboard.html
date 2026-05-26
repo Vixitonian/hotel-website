@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Grandeur Admin</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="admin-body">
+
+  <!-- Top bar -->
+  <header class="admin-top">
+    <a href="../index.html" class="nav-logo">
+      <span class="name" style="font-size:1.3rem;">Grandeur</span>
+      <span class="tagline">Admin</span>
+    </a>
+    <span style="color:rgba(255,255,255,0.3); flex:1;"></span>
+    <a href="../index.html" class="btn btn-ghost btn-sm" style="margin-right:8px;">← View Site</a>
+    <button id="logoutBtn" class="btn btn-ghost btn-sm">Sign Out</button>
+  </header>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <nav>
+        <a href="#overview" class="active" data-section="overview">
+          <span class="icon">📊</span> Overview
+        </a>
+        <a href="#rooms" data-section="rooms">
+          <span class="icon">🛏️</span> Rooms
+        </a>
+        <a href="#menu" data-section="menu">
+          <span class="icon">🍽️</span> Menu
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="admin-content">
+
+      <!-- ── Overview ─────────────────────────────────── -->
+      <div id="section-overview" class="admin-section">
+        <div class="admin-page-header">
+          <h1>Dashboard</h1>
+          <span style="font-size:0.82rem; color:var(--muted);" id="currentDate"></span>
+        </div>
+        <div class="stats-cards" id="overviewStats">
+          <div class="stat-card">
+            <div class="stat-icon">🛏️</div>
+            <div><div class="stat-value" id="statRooms">—</div><div class="stat-label">Rooms</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🍽️</div>
+            <div><div class="stat-value" id="statMenuItems">—</div><div class="stat-label">Menu Items</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div><div class="stat-value" id="statLowestRoom">—</div><div class="stat-label">From (per night)</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div><div class="stat-value">5.0</div><div class="stat-label">Avg. Rating</div></div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-header"><h3>Quick Actions</h3></div>
+          <div class="admin-card-body" style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="showSection('rooms')">+ Add Room</button>
+            <button class="btn btn-primary" onclick="showSection('menu')">+ Add Menu Item</button>
+            <a href="../rooms.html" target="_blank" class="btn btn-outline">View Rooms Page</a>
+            <a href="../menu.html" target="_blank" class="btn btn-outline">View Menu Page</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Rooms ───────────────────────────────────── -->
+      <div id="section-rooms" class="admin-section" style="display:none;">
+        <div class="admin-page-header">
+          <h1>Rooms</h1>
+        </div>
+
+        <!-- Add Room Form -->
+        <div class="admin-card" style="margin-bottom:32px;">
+          <div class="admin-card-header">
+            <h3>Add New Room</h3>
+          </div>
+          <div class="admin-card-body">
+            <div id="roomFormAlert"></div>
+            <form id="addRoomForm" class="admin-form" enctype="multipart/form-data">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Room Name *</label>
+                  <input type="text" name="name" placeholder="e.g. Ocean Suite" required />
+                </div>
+                <div class="form-group">
+                  <label>Room Type *</label>
+                  <select name="type" required>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="Superior">Superior</option>
+                    <option value="Suite">Suite</option>
+                    <option value="Presidential">Presidential</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Price per Night (₦) *</label>
+                  <input type="number" name="price" placeholder="85000" min="0" required />
+                </div>
+                <div class="form-group">
+                  <label>Capacity (guests)</label>
+                  <input type="number" name="capacity" placeholder="2" min="1" max="10" value="2" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Room Size</label>
+                  <input type="text" name="size" placeholder="e.g. 32 m²" />
+                </div>
+                <div class="form-group">
+                  <label>Bed Type</label>
+                  <select name="bed">
+                    <option value="King">King</option>
+                    <option value="Super King">Super King</option>
+                    <option value="Twin">Twin</option>
+                    <option value="Double">Double</option>
+                    <option value="Queen">Queen</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" placeholder="Describe the room…"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Amenities (comma-separated)</label>
+                <input type="text" name="amenities" placeholder="Free Wi-Fi, Air Conditioning, Mini Bar" />
+              </div>
+              <div class="form-group">
+                <label>Room Photo</label>
+                <input type="file" name="image" accept="image/jpeg,image/png,image/webp" />
+              </div>
+              <button type="submit" class="btn btn-primary">Add Room</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Rooms Table -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>All Rooms</h3>
+            <button class="btn btn-outline btn-sm" onclick="loadRoomsTable()">↻ Refresh</button>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <div id="roomsTableWrap">
+              <div class="loading-state"><div class="spinner"></div><p>Loading…</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Menu ────────────────────────────────────── -->
+      <div id="section-menu" class="admin-section" style="display:none;">
+        <div class="admin-page-header">
+          <h1>Menu</h1>
+        </div>
+
+        <!-- Add Menu Item Form -->
+        <div class="admin-card" style="margin-bottom:32px;">
+          <div class="admin-card-header">
+            <h3>Add Menu Item</h3>
+          </div>
+          <div class="admin-card-body">
+            <div id="menuFormAlert"></div>
+            <form id="addMenuForm" class="admin-form" enctype="multipart/form-data">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Item Name *</label>
+                  <input type="text" name="name" placeholder="e.g. Jollof Rice" required />
+                </div>
+                <div class="form-group">
+                  <label>Category *</label>
+                  <select name="category" required>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Starters">Starters</option>
+                    <option value="Main" selected>Main Course</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Drinks">Drinks</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Price (₦) *</label>
+                <input type="number" name="price" placeholder="12000" min="0" required />
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" placeholder="Describe the dish…"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Food Photo</label>
+                <input type="file" name="image" accept="image/jpeg,image/png,image/webp" />
+              </div>
+              <button type="submit" class="btn btn-primary">Add Item</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Menu Table -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>All Menu Items</h3>
+            <button class="btn btn-outline btn-sm" onclick="loadMenuTable()">↻ Refresh</button>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <div id="menuTableWrap">
+              <div class="loading-state"><div class="spinner"></div><p>Loading…</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+  <script>
+    // Auth guard
+    if (sessionStorage.getItem('admin_auth') !== 'true') {
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.removeItem('admin_auth');
+      window.location.href = 'index.html';
+    });
+
+    document.getElementById('currentDate').textContent =
+      new Date().toLocaleDateString('en-NG', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+    // Sidebar navigation
+    document.querySelectorAll('.admin-sidebar nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        showSection(link.dataset.section);
+      });
+    });
+
+    function showSection(name) {
+      document.querySelectorAll('.admin-section').forEach(s => s.style.display = 'none');
+      document.querySelectorAll('.admin-sidebar nav a').forEach(a => a.classList.remove('active'));
+      document.getElementById('section-' + name).style.display = 'block';
+      document.querySelector(`[data-section="${name}"]`)?.classList.add('active');
+      if (name === 'rooms')    loadRoomsTable();
+      if (name === 'menu')     loadMenuTable();
+      if (name === 'overview') loadOverviewStats();
+    }
+
+    // Init
+    loadOverviewStats();
+  </script>
+</body>
+</html>
