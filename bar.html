@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurant Menu — Grandeur Hotel</title>
+  <title>Bar Menu — Grandeur Hotel</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -17,7 +17,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="rooms.html">Rooms</a></li>
-        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="menu.html">Menu</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -29,23 +29,23 @@
     </div>
   </nav>
 
-  <div class="page-hero">
-    <div class="container">
-      <span class="eyebrow">The Restaurant</span>
-      <h1>Our Menu</h1>
-      <p>Fresh, seasonal ingredients crafted into dishes that honour both local tradition and global inspiration.</p>
+  <div class="bar-page-hero">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow">The Bar</span>
+      <h1 style="color:#fff;">Bar Menu</h1>
+      <p>Curated spirits, wines, cocktails, and refreshments — served with Grandeur's signature style.</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
-      <div class="menu-filter" id="menuFilter">
+      <div class="menu-filter" id="barFilter">
         <button class="active" data-cat="all">All</button>
       </div>
 
-      <div class="menu-grid" id="menuGrid">
+      <div class="menu-grid" id="barGrid">
         <div class="loading-state" style="grid-column:1/-1;">
-          <div class="spinner"></div><p>Loading menu…</p>
+          <div class="spinner"></div><p>Loading bar menu…</p>
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="footer-col"><h5>Navigate</h5><ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
-          <li><a href="menu.html">Menu</a></li>
+          <li><a href="menu.html">Restaurant</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul></div>
@@ -72,10 +72,8 @@
           <li><a href="tel:+2348001234567">+234 800 123 4567</a></li>
           <li><a href="https://wa.me/2348001234567" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul></div>
-        <div class="footer-col"><h5>Hours</h5><ul>
-          <li>Breakfast: 6 – 11 AM</li>
-          <li>Lunch: 12 – 3 PM</li>
-          <li>Dinner: 6 – 10 PM</li>
+        <div class="footer-col"><h5>Bar Hours</h5><ul>
+          <li>Daily: 4 PM – 2 AM</li>
         </ul></div>
       </div>
       <div class="footer-bottom">
@@ -85,14 +83,14 @@
     </div>
   </footer>
 
-  <!-- Menu item modal -->
-  <div class="modal-overlay" id="menuModal" role="dialog" aria-modal="true">
+  <!-- Bar item modal -->
+  <div class="modal-overlay" id="barModal" role="dialog" aria-modal="true">
     <div class="modal">
       <div class="modal-header">
-        <h3 id="menuModalTitle">Menu Item</h3>
-        <button class="modal-close" id="menuModalClose" aria-label="Close">✕</button>
+        <h3 id="barModalTitle">Drink Details</h3>
+        <button class="modal-close" id="barModalClose" aria-label="Close">✕</button>
       </div>
-      <div class="modal-body" id="menuModalBody"></div>
+      <div class="modal-body" id="barModalBody"></div>
     </div>
   </div>
 
@@ -104,24 +102,23 @@
 
     let allItems      = [];
     let allCategories = [];
-    let activeFilter  = 'all';
 
-    async function loadMenu() {
+    async function loadBar() {
       try {
-        const res  = await fetch('api/menu.php?action=list');
+        const res  = await fetch('api/bar.php?action=list');
         const data = await res.json();
         allCategories = data.categories || [];
         allItems      = data.items      || [];
         buildFilters();
-        renderMenu(allItems);
+        renderItems(allItems);
       } catch {
-        document.getElementById('menuGrid').innerHTML =
-          '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">⚠️</div><p>Could not load menu. Please try again later.</p></div>';
+        document.getElementById('barGrid').innerHTML =
+          '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">⚠️</div><p>Could not load bar menu. Please try again later.</p></div>';
       }
     }
 
     function buildFilters() {
-      const bar = document.getElementById('menuFilter');
+      const bar = document.getElementById('barFilter');
       const buttons = allCategories.map(cat =>
         `<button data-cat="${cat.id}">${cat.name}</button>`
       ).join('');
@@ -130,33 +127,30 @@
         btn.addEventListener('click', () => {
           bar.querySelectorAll('button').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          activeFilter = btn.dataset.cat;
-          const filtered = activeFilter === 'all'
-            ? allItems
-            : allItems.filter(m => m.category_id === activeFilter);
-          renderMenu(filtered);
+          const cat = btn.dataset.cat;
+          const filtered = cat === 'all' ? allItems : allItems.filter(i => i.category_id === cat);
+          renderItems(filtered);
         });
       });
     }
 
-    function renderMenu(items) {
-      const grid = document.getElementById('menuGrid');
+    function renderItems(items) {
+      const grid = document.getElementById('barGrid');
       const visible = items.filter(i => i.available !== false);
       if (!visible.length) {
-        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">🍽️</div><p>No items found.</p></div>';
+        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">🍸</div><p>No items found.</p></div>';
         return;
       }
-      grid.innerHTML = visible.map(m => buildMenuCard(m)).join('');
+      grid.innerHTML = visible.map(m => buildCard(m)).join('');
     }
 
-    function buildMenuCard(m) {
+    function buildCard(m) {
       const cat  = allCategories.find(c => c.id === m.category_id);
-      const img  = m.image
-        ? `<img src="images/food/${m.image}" alt="${m.name}" loading="lazy" />`
-        : `<div class="placeholder-img">🍽️</div>`;
       return `
-        <div class="menu-card" style="cursor:pointer;" onclick="openMenuModal('${m.id}')">
-          <div class="menu-card-img">${img}</div>
+        <div class="menu-card" style="cursor:pointer;" onclick="openModal('${m.id}')">
+          <div class="menu-card-img">
+            <div class="placeholder-img" style="background:linear-gradient(135deg,var(--charcoal2),#2d2d3a);">🍸</div>
+          </div>
           <div class="menu-card-body">
             <h4>${m.name}</h4>
             <p>${(m.description || '').substring(0, 80)}${m.description?.length > 80 ? '…' : ''}</p>
@@ -168,35 +162,32 @@
         </div>`;
     }
 
-    function openMenuModal(itemId) {
+    function openModal(itemId) {
       const m   = allItems.find(x => x.id === itemId);
       if (!m) return;
       const cat = allCategories.find(c => c.id === m.category_id);
-      document.getElementById('menuModalTitle').textContent = m.name;
-      const img = m.image
-        ? `<div class="modal-img"><img src="images/food/${m.image}" alt="${m.name}" /></div>`
-        : `<div class="modal-img">🍽️</div>`;
-      document.getElementById('menuModalBody').innerHTML = `
-        ${img}
+      document.getElementById('barModalTitle').textContent = m.name;
+      document.getElementById('barModalBody').innerHTML = `
+        <div class="modal-img" style="background:linear-gradient(135deg,var(--charcoal2),#2d2d3a);">🍸</div>
         <p style="font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px;">${cat ? cat.name : ''}</p>
         <h2 style="font-family:var(--serif);font-size:1.6rem;margin:0 0 12px;">${m.name}</h2>
         <p style="font-family:var(--serif);font-size:1.4rem;color:var(--gold);margin:0 0 16px;">₦${Number(m.price).toLocaleString()}</p>
         <p style="color:var(--muted);line-height:1.7;">${m.description || ''}</p>`;
-      document.getElementById('menuModal').classList.add('open');
+      document.getElementById('barModal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
-    function closeMenuModal() {
-      document.getElementById('menuModal').classList.remove('open');
+    function closeModal() {
+      document.getElementById('barModal').classList.remove('open');
       document.body.style.overflow = '';
     }
-    document.getElementById('menuModalClose').addEventListener('click', closeMenuModal);
-    document.getElementById('menuModal').addEventListener('click', e => {
-      if (e.target === document.getElementById('menuModal')) closeMenuModal();
+    document.getElementById('barModalClose').addEventListener('click', closeModal);
+    document.getElementById('barModal').addEventListener('click', e => {
+      if (e.target === document.getElementById('barModal')) closeModal();
     });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenuModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    loadMenu();
+    loadBar();
   </script>
 </body>
 </html>

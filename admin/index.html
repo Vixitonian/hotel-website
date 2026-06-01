@@ -25,40 +25,49 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="••••••••" required autofocus />
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;">
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;" id="loginBtn">
           Sign In
         </button>
       </form>
-
-      <p style="margin-top:24px; font-size:0.78rem; color:var(--muted);">
-        Default password: <strong>grandeur2025</strong><br>
-        <em>Change via <code>.htaccess</code> in production.</em>
-      </p>
     </div>
   </div>
 
   <script>
-    // Simple client-side password check.
-    // In production: replace with server-side session authentication.
-    const ADMIN_PASS = 'grandeur2025';
-
-    // Auto-redirect if already authenticated
     if (sessionStorage.getItem('admin_auth') === 'true') {
       window.location.href = 'dashboard.html';
     }
 
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const pass = document.getElementById('password').value;
-      const alert = document.getElementById('loginAlert');
+      const btn      = document.getElementById('loginBtn');
+      const alertEl  = document.getElementById('loginAlert');
+      const password = document.getElementById('password').value;
 
-      if (pass === ADMIN_PASS) {
-        sessionStorage.setItem('admin_auth', 'true');
-        window.location.href = 'dashboard.html';
-      } else {
-        alert.innerHTML = '<div class="alert alert-error">⚠️ Incorrect password. Please try again.</div>';
-        document.getElementById('password').value = '';
-        document.getElementById('password').focus();
+      btn.disabled    = true;
+      btn.textContent = 'Signing in…';
+      alertEl.innerHTML = '';
+
+      try {
+        const res  = await fetch('../api/config.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'auth', password }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          sessionStorage.setItem('admin_auth', 'true');
+          window.location.href = 'dashboard.html';
+        } else {
+          alertEl.innerHTML = '<div class="alert alert-error">⚠️ Incorrect password. Please try again.</div>';
+          document.getElementById('password').value = '';
+          document.getElementById('password').focus();
+        }
+      } catch {
+        alertEl.innerHTML = '<div class="alert alert-error">⚠️ Could not connect to server. Please try again.</div>';
+      } finally {
+        btn.disabled    = false;
+        btn.textContent = 'Sign In';
       }
     });
   </script>
