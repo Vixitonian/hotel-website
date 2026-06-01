@@ -34,17 +34,37 @@ function respond(array $payload, int $status = 200): void {
     exit;
 }
 
-function handleImageUpload(): ?string {
-    if (empty($_FILES['image']['tmp_name'])) return null;
-    $file    = $_FILES['image'];
-    $allowed = ['image/jpeg', 'image/png', 'image/webp'];
-    $mime    = mime_content_type($file['tmp_name']);
-    if (!in_array($mime, $allowed)) return null;
-    $ext      = pathinfo($file['name'], PATHINFO_EXTENSION);
-    $filename = uniqid('room_') . '.' . strtolower($ext);
-    $dest     = UPLOAD_DIR . $filename;
+function handleMultipleImageUploads(): array {
+    $uploaded = [];
+    $allowed  = ['image/jpeg', 'image/png', 'image/webp'];
     if (!is_dir(UPLOAD_DIR)) mkdir(UPLOAD_DIR, 0755, true);
-    return move_uploaded_file($file['tmp_name'], $dest) ? $filename : null;
+
+    // Support both single 'image' and multiple 'images[]'
+    $files = [];
+    if (!empty($_FILES['images']['name'])) {
+        $count = is_array($_FILES['images']['name']) ? count($_FILES['images']['name']) : 1;
+        if ($count === 1 && !is_array($_FILES['images']['name'])) {
+            $files[] = ['tmp_name' => $_FILES['images']['tmp_name'], 'name' => $_FILES['images']['name']];
+        } else {
+            for ($i = 0; $i < $count; $i++) {
+                $files[] = ['tmp_name' => $_FILES['images']['tmp_name'][$i], 'name' => $_FILES['images']['name'][$i]];
+            }
+        }
+    } elseif (!empty($_FILES['image']['tmp_name'])) {
+        $files[] = ['tmp_name' => $_FILES['image']['tmp_name'], 'name' => $_FILES['image']['name']];
+    }
+
+    foreach ($files as $file) {
+        if (empty($file['tmp_name'])) continue;
+        $mime = mime_content_type($file['tmp_name']);
+        if (!in_array($mime, $allowed)) continue;
+        $ext      = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $filename = uniqid('room_') . '.' . strtolower($ext);
+        if (move_uploaded_file($file['tmp_name'], UPLOAD_DIR . $filename)) {
+            $uploaded[] = $filename;
+        }
+    }
+    return $uploaded;
 }
 
 function sortedCategories(array $cats): array {
@@ -127,7 +147,7 @@ if ($method === 'POST') {
         }
         if (!isset($data['categories'][$input['category_id']])) respond(['error' => 'Invalid category'], 422);
 
-        $image = handleImageUpload();
+        $images  = handleMultipleImageUploads();
         $amenStr = $input['amenities'] ?? '';
         $amenities = is_array($amenStr) ? $amenStr : array_filter(array_map('trim', explode(',', $amenStr)));
 
@@ -141,11 +161,10 @@ if ($method === 'POST') {
                                     ? (float)$input['discounted_price'] : null,
             'description'      => trim($input['description'] ?? ''),
             'amenities'        => array_values($amenities),
-            'images'           => [],
+            'images'           => $images,
             'available'        => true,
             'created_at'       => date('c'),
         ];
-        if ($image) $room['images'][] = $image;
 
         $data['rooms'][$room['id']] = $room;
         writeData($data);
@@ -170,8 +189,10 @@ if ($method === 'POST') {
             else $data['rooms'][$id][$f] = $input[$f];
         }
 
-        $image = handleImageUpload();
-        if ($image) $data['rooms'][$id]['images'][] = $image;
+        $newImages = handleMultipleImageUploads();
+        if ($newImages) {
+            $data['rooms'][$id]['images'] = array_merge($data['rooms'][$id]['images'] ?? [], $newImages);
+        }
         $data['rooms'][$id]['updated_at'] = date('c');
         writeData($data);
         respond(['success' => true, 'room' => $data['rooms'][$id]]);
@@ -183,6 +204,18 @@ if ($method === 'POST') {
         $data['rooms'][$id]['available'] = !$data['rooms'][$id]['available'];
         writeData($data);
         respond(['success' => true, 'available' => $data['rooms'][$id]['available']]);
+    }
+
+    if ($action === 'delete_image') {
+        $id       = $input['id'] ?? null;
+        $filename = $input['filename'] ?? null;
+        if (!$id || !$filename || !isset($data['rooms'][$id])) respond(['error' => 'Not found'], 404);
+        $images = $data['rooms'][$id]['images'] ?? [];
+        $data['rooms'][$id]['images'] = array_values(array_filter($images, fn($f) => $f !== $filename));
+        $path = UPLOAD_DIR . $filename;
+        if (file_exists($path)) unlink($path);
+        writeData($data);
+        respond(['success' => true, 'images' => $data['rooms'][$id]['images']]);
     }
 
     respond(['error' => 'Unknown action'], 400);
