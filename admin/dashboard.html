@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard — Grandeur Admin</title>
+  <title>Dashboard — Avanna Hotel Admin</title>
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body class="admin-body">
@@ -11,8 +11,7 @@
   <!-- Top bar -->
   <header class="admin-top">
     <a href="../index.html" class="nav-logo">
-      <span class="name" style="font-size:1.3rem;">Grandeur</span>
-      <span class="tagline">Admin</span>
+      <img src="../images/avanna_logo.png" alt="Avanna Hotel" class="nav-logo-img" style="height:36px;" />
     </a>
     <span style="color:rgba(255,255,255,0.3); flex:1;"></span>
     <a href="../index.html" class="btn btn-ghost btn-sm" style="margin-right:8px;" target="_blank">← View Site</a>
@@ -138,8 +137,8 @@
                 <input type="text" name="amenities" placeholder="Free Wi-Fi, Air Conditioning, Mini Bar" />
               </div>
               <div class="form-group">
-                <label>Room Photo</label>
-                <input type="file" name="image" accept="image/jpeg,image/png,image/webp" />
+                <label>Room Photos (select multiple)</label>
+                <input type="file" name="images[]" accept="image/jpeg,image/png,image/webp" multiple />
               </div>
               <button type="submit" class="btn btn-primary">Add Room</button>
             </form>

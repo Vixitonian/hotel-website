@@ -18,7 +18,7 @@ function buildRoomCard(r, categories) {
   const hasDisc = r.discounted_price && r.discounted_price < r.price;
   const imgSrc  = (r.images && r.images.length)
     ? `<img src="images/rooms/${r.images[0]}" alt="Room ${r.number}" loading="lazy" />`
-    : `<div class="placeholder-img">🛏️</div>`;
+    : `<img src="images/avanna_placeholder.jpg" alt="Avanna Hotel" loading="lazy" />`;
   const priceHTML = hasDisc
     ? `<span class="price-original">₦${Number(r.price).toLocaleString()}</span>
        <span class="price-discounted">₦${Number(r.discounted_price).toLocaleString()}<span class="per">/ night</span></span>`

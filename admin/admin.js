@@ -301,6 +301,11 @@ function editRoom(id) {
   const catOptions = _roomCategories.map(c =>
     `<option value="${c.id}" ${c.id === r.category_id ? 'selected' : ''}>${c.name}</option>`
   ).join('');
+  const existingImgs = (r.images || []).map(img => `
+    <div class="admin-img-item" id="img-${img}">
+      <img src="../images/rooms/${img}" alt="" />
+      <button class="admin-img-del" type="button" onclick="deleteRoomImage('${r.id}','${img}')" title="Delete">✕</button>
+    </div>`).join('');
   const bodyHTML = `
     <form id="editRoomForm" class="admin-form" enctype="multipart/form-data">
       <input type="hidden" name="id" value="${r.id}" />
@@ -327,13 +332,34 @@ function editRoom(id) {
         <textarea name="description">${r.description || ''}</textarea></div>
       <div class="form-group"><label>Amenities (comma-separated)</label>
         <input type="text" name="amenities" value="${(r.amenities || []).join(', ')}" /></div>
-      <div class="form-group"><label>New Photo (leave blank to keep existing)</label>
-        <input type="file" name="image" accept="image/jpeg,image/png,image/webp" /></div>
+      ${existingImgs ? `<div class="form-group"><label>Current Photos</label><div class="admin-img-list">${existingImgs}</div></div>` : ''}
+      <div class="form-group"><label>Add More Photos</label>
+        <input type="file" name="images[]" accept="image/jpeg,image/png,image/webp" multiple /></div>
     </form>`;
   const footerHTML = `
     <button class="btn btn-outline btn-sm" onclick="closeAdminModal()">Cancel</button>
     <button class="btn btn-primary btn-sm" onclick="submitEditRoom()">Save Changes</button>`;
   openAdminModal(`Edit Room ${r.number}`, bodyHTML, footerHTML);
+}
+
+async function deleteRoomImage(roomId, filename) {
+  if (!confirm('Delete this photo?')) return;
+  try {
+    const res  = await fetch(API.rooms, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'delete_image', id: roomId, filename }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      const el = document.getElementById(`img-${filename}`);
+      if (el) el.remove();
+      const room = _allRooms.find(r => r.id === roomId);
+      if (room) room.images = data.images;
+    } else {
+      alert(data.error || 'Delete failed.');
+    }
+  } catch { alert('Network error.'); }
 }
 
 async function submitEditRoom() {

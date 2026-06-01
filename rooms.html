@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rooms &amp; Suites — Grandeur Hotel</title>
+  <title>Rooms &amp; Suites — Avanna Hotel</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -11,19 +11,17 @@
   <nav id="navbar">
     <div class="container nav-inner">
       <a href="index.html" class="nav-logo">
-        <span class="name">Grandeur</span>
-        <span class="tagline">Hotel &amp; Suites</span>
+        <img src="images/avanna_logo.png" alt="Avanna Hotel" class="nav-logo-img" />
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="rooms.html" class="active">Rooms</a></li>
-        <li><a href="menu.html">Menu</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="cta-pair nav-book">
-        <a href="tel:+2348001234567" class="btn btn-call btn-sm">📞 Call</a>
-        <a href="https://wa.me/2348001234567" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a href="tel:08065899924" class="btn btn-call btn-sm">📞 Call</a>
+        <a href="https://wa.me/2348065899924" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
       <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
     </div>
@@ -72,23 +70,21 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo" style="margin-bottom:16px;display:flex;">
-            <span class="name" style="color:#fff;">Grandeur</span>
-            <span class="tagline">Hotel &amp; Suites</span>
+          <a href="index.html" class="nav-logo" style="margin-bottom:16px;">
+            <img src="images/avanna_logo.png" alt="Avanna Hotel" class="nav-logo-img" />
           </a>
-          <p>A landmark of refined hospitality in the heart of Abuja since 1968.</p>
+          <p>A landmark of refined hospitality in Asaba, Delta State.</p>
         </div>
         <div class="footer-col"><h5>Navigate</h5><ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
-          <li><a href="menu.html">Menu</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul></div>
         <div class="footer-col"><h5>Contact</h5><ul>
-          <li><a href="tel:+2348001234567">+234 800 123 4567</a></li>
-          <li><a href="https://wa.me/2348001234567" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="mailto:hello@grandeurhotel.ng">hello@grandeurhotel.ng</a></li>
+          <li><a href="tel:08065899924">08065899924</a></li>
+          <li><a href="https://wa.me/2348065899924" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:hello@avannahotel.ng">hello@avannahotel.ng</a></li>
         </ul></div>
         <div class="footer-col"><h5>Services</h5><ul>
           <li><a href="contact.html">Airport Transfer</a></li>
@@ -97,7 +93,7 @@
         </ul></div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Grandeur Hotel &amp; Suites. All rights reserved.</span>
+        <span>© 2025 Avanna Hotel. All rights reserved.</span>
         <span>Made in Nigeria 🇳🇬</span>
       </div>
     </div>
@@ -119,9 +115,15 @@
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('navLinks').classList.toggle('open');
     });
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+    });
+    document.addEventListener('click', e => {
+      if (!document.getElementById('navbar').contains(e.target)) document.getElementById('navLinks').classList.remove('open');
+    });
 
-    const PHONE    = '+2348001234567';
-    const WA       = '2348001234567';
+    const PHONE    = '08065899924';
+    const WA       = '2348065899924';
 
     let allRooms      = [];
     let allCategories = [];
@@ -209,7 +211,7 @@
 
       const imgSrc = (r.images && r.images.length)
         ? `<img src="images/rooms/${r.images[0]}" alt="${r.name}" loading="lazy" />`
-        : `<div class="placeholder-img" style="background:${catGradient(r.category_id)};">🛏️</div>`;
+        : `<img src="images/avanna_placeholder.jpg" alt="Avanna Hotel" loading="lazy" />`;
 
       return `
         <div class="room-card">
@@ -253,9 +255,19 @@
 
       document.getElementById('modalRoomName').textContent = `Room ${r.number}`;
 
-      const imgHTML = (r.images && r.images.length)
-        ? `<div class="modal-img"><img src="images/rooms/${r.images[0]}" alt="${r.name}" /></div>`
-        : `<div class="modal-img" style="background:${catGradient(r.category_id)};">🛏️</div>`;
+      let imgHTML;
+      if (r.images && r.images.length) {
+        const thumbs = r.images.map((img, i) =>
+          `<div class="room-img-thumb${i === 0 ? ' active' : ''}" onclick="switchModalImg(this,'images/rooms/${img}')">
+            <img src="images/rooms/${img}" alt="Room ${r.number}" />
+          </div>`
+        ).join('');
+        imgHTML = `
+          <div class="modal-img" id="modalMainImg"><img src="images/rooms/${r.images[0]}" alt="${r.name}" id="modalMainImgEl" /></div>
+          ${r.images.length > 1 ? `<div class="room-img-gallery">${thumbs}</div>` : ''}`;
+      } else {
+        imgHTML = `<div class="modal-img"><img src="images/avanna_placeholder.jpg" alt="Avanna Hotel" /></div>`;
+      }
 
       const priceHTML = hasDisc
         ? `<span class="price-original">₦${Number(r.price).toLocaleString()} / night</span>
@@ -299,6 +311,12 @@
       if (e.target === document.getElementById('roomModal')) closeModal();
     });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    function switchModalImg(thumbEl, src) {
+      document.getElementById('modalMainImgEl').src = src;
+      document.querySelectorAll('.room-img-thumb').forEach(t => t.classList.remove('active'));
+      thumbEl.classList.add('active');
+    }
 
     // Check URL param for pre-selected category
     const params = new URLSearchParams(window.location.search);

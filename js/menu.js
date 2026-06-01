@@ -17,7 +17,7 @@ function buildMenuCard(m, categories) {
   const cat = (categories || []).find(c => c.id === m.category_id);
   const img = m.image
     ? `<img src="images/food/${m.image}" alt="${m.name}" loading="lazy" />`
-    : `<div class="placeholder-img">🍽️</div>`;
+    : `<img src="images/avanna_placeholder.jpg" alt="Avanna Hotel" loading="lazy" />`;
   return `
     <div class="menu-card">
       <div class="menu-card-img">${img}</div>
