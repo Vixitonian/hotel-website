@@ -172,6 +172,7 @@ p { max-width: 65ch; }
   height: 48px;
   width: auto;
   display: block;
+  filter: brightness(0) invert(1);
 }
 
 .nav-links {
@@ -1076,6 +1077,18 @@ footer {
   .cta-pair { flex-direction: column; gap: 12px; }
   .cta-pair .btn { width: 100%; justify-content: center; }
   .contact-cta-grid { grid-template-columns: 1fr; }
+
+  .section { padding: 60px 0; }
+  .section-header { margin-bottom: 40px; }
+  .page-hero { padding: calc(var(--nav-h) + 40px) 0 40px; }
+  .page-hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+
+  .contact-cta-card { padding: 28px 20px; }
+  .contact-cta-card h3 { font-size: 1.2rem; }
+
+  .contact-info-item .text p { word-break: break-word; overflow-wrap: break-word; }
+
+  .bar-page-hero { padding: 60px 0 40px; }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
