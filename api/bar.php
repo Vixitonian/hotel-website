@@ -1,9 +1,8 @@
 <?php
 /**
- * api/menu.php
- * CRUD for restaurant menu categories and items.
- * Data stored in ../data/menu.json
- * Shape: { "categories": {...}, "items": {...} }
+ * api/bar.php
+ * CRUD for bar menu categories and items.
+ * Data stored in ../data/bar.json
  */
 
 header('Content-Type: application/json');
@@ -13,8 +12,8 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
-define('DATA_FILE', __DIR__ . '/../data/menu.json');
-define('UPLOAD_DIR', __DIR__ . '/../images/food/');
+define('DATA_FILE', __DIR__ . '/../data/bar.json');
+define('UPLOAD_DIR', __DIR__ . '/../images/bar/');
 
 function readData(): array {
     if (!file_exists(DATA_FILE)) return ['categories' => [], 'items' => []];
@@ -41,7 +40,7 @@ function handleImageUpload(): ?string {
     $mime    = mime_content_type($file['tmp_name']);
     if (!in_array($mime, $allowed)) return null;
     $ext      = pathinfo($file['name'], PATHINFO_EXTENSION);
-    $filename = uniqid('food_') . '.' . strtolower($ext);
+    $filename = uniqid('bar_') . '.' . strtolower($ext);
     $dest     = UPLOAD_DIR . $filename;
     if (!is_dir(UPLOAD_DIR)) mkdir(UPLOAD_DIR, 0755, true);
     return move_uploaded_file($file['tmp_name'], $dest) ? $filename : null;
@@ -63,10 +62,6 @@ if ($method === 'GET') {
     if ($action === 'list') {
         $cats  = sortedCategories($data['categories']);
         $items = array_values($data['items']);
-        if (!empty($_GET['category_id'])) {
-            $catId = $_GET['category_id'];
-            $items = array_values(array_filter($items, fn($i) => ($i['category_id'] ?? '') === $catId));
-        }
         respond(['categories' => $cats, 'items' => $items]);
     }
     if ($action === 'list_categories') {
@@ -104,8 +99,8 @@ if ($method === 'POST') {
     if ($action === 'update_category') {
         $id = $input['id'] ?? null;
         if (!$id || !isset($data['categories'][$id])) respond(['error' => 'Category not found'], 404);
-        if (isset($input['name']))  $data['categories'][$id]['name']  = trim($input['name']);
-        if (isset($input['order'])) $data['categories'][$id]['order'] = (int)$input['order'];
+        if (!empty($input['name']))  $data['categories'][$id]['name']  = trim($input['name']);
+        if (isset($input['order']))  $data['categories'][$id]['order'] = (int)$input['order'];
         writeData($data);
         respond(['success' => true, 'category' => $data['categories'][$id]]);
     }
@@ -122,13 +117,13 @@ if ($method === 'POST') {
 
     // ── Item actions ──────────────────────────────────────────────
     if ($action === 'add') {
-        if (empty($input['name']))   respond(['error' => 'Item name required'], 422);
+        if (empty($input['name'])) respond(['error' => 'Item name required'], 422);
         if (!isset($input['price'])) respond(['error' => 'Price required'], 422);
         $catId = $input['category_id'] ?? '';
         if (!isset($data['categories'][$catId])) respond(['error' => 'Invalid category'], 422);
         $image = handleImageUpload();
         $item = [
-            'id'          => 'menu_' . uniqid(),
+            'id'          => 'bar_' . uniqid(),
             'name'        => trim($input['name']),
             'category_id' => $catId,
             'price'       => (float)$input['price'],

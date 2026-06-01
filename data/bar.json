@@ -1,0 +1,427 @@
+{
+  "categories": {
+    "soft-drinks": {
+      "id": "soft-drinks",
+      "name": "Soft Drinks",
+      "order": 1
+    },
+    "energy-drinks": {
+      "id": "energy-drinks",
+      "name": "Energy Drinks",
+      "order": 2
+    },
+    "water": {
+      "id": "water",
+      "name": "Water",
+      "order": 3
+    },
+    "juices-dairy": {
+      "id": "juices-dairy",
+      "name": "Juices & Dairy",
+      "order": 4
+    },
+    "beer": {
+      "id": "beer",
+      "name": "Beer",
+      "order": 5
+    },
+    "stout": {
+      "id": "stout",
+      "name": "Stout",
+      "order": 6
+    },
+    "wines": {
+      "id": "wines",
+      "name": "Wines",
+      "order": 7
+    },
+    "champagne": {
+      "id": "champagne",
+      "name": "Champagne & Sparkling Wine",
+      "order": 8
+    },
+    "whiskey": {
+      "id": "whiskey",
+      "name": "Whiskey",
+      "order": 9
+    },
+    "cognac": {
+      "id": "cognac",
+      "name": "Cognac",
+      "order": 10
+    },
+    "vodka": {
+      "id": "vodka",
+      "name": "Vodka",
+      "order": 11
+    },
+    "gin": {
+      "id": "gin",
+      "name": "Gin",
+      "order": 12
+    },
+    "rum": {
+      "id": "rum",
+      "name": "Rum",
+      "order": 13
+    },
+    "cocktails": {
+      "id": "cocktails",
+      "name": "Cocktails",
+      "order": 14
+    }
+  },
+  "items": {
+    "bar_001": {
+      "id": "bar_001",
+      "name": "Coca-Cola",
+      "category_id": "soft-drinks",
+      "price": 500,
+      "description": "Classic Coca-Cola, served chilled.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_002": {
+      "id": "bar_002",
+      "name": "Fanta Orange",
+      "category_id": "soft-drinks",
+      "price": 500,
+      "description": "Refreshing orange-flavoured Fanta, served chilled.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_003": {
+      "id": "bar_003",
+      "name": "Sprite",
+      "category_id": "soft-drinks",
+      "price": 500,
+      "description": "Crisp, clear lemon-lime Sprite, served chilled.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_004": {
+      "id": "bar_004",
+      "name": "Pepsi",
+      "category_id": "soft-drinks",
+      "price": 500,
+      "description": "Classic Pepsi cola, served chilled.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_005": {
+      "id": "bar_005",
+      "name": "Red Bull",
+      "category_id": "energy-drinks",
+      "price": 2000,
+      "description": "The original energy drink — vitalises body and mind.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_006": {
+      "id": "bar_006",
+      "name": "Monster Energy",
+      "category_id": "energy-drinks",
+      "price": 2500,
+      "description": "Monster Energy unleash the beast — available in original green.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_007": {
+      "id": "bar_007",
+      "name": "Still Water (500ml)",
+      "category_id": "water",
+      "price": 500,
+      "description": "Chilled still mineral water, 500ml bottle.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_008": {
+      "id": "bar_008",
+      "name": "Still Water (1.5L)",
+      "category_id": "water",
+      "price": 800,
+      "description": "Chilled still mineral water, 1.5L bottle.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_009": {
+      "id": "bar_009",
+      "name": "Sparkling Water",
+      "category_id": "water",
+      "price": 1200,
+      "description": "Lightly carbonated sparkling mineral water, served chilled.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_010": {
+      "id": "bar_010",
+      "name": "Orange Juice",
+      "category_id": "juices-dairy",
+      "price": 2000,
+      "description": "Freshly squeezed orange juice.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_011": {
+      "id": "bar_011",
+      "name": "Pineapple Juice",
+      "category_id": "juices-dairy",
+      "price": 2000,
+      "description": "Chilled tropical pineapple juice.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_012": {
+      "id": "bar_012",
+      "name": "Yoghurt Drink",
+      "category_id": "juices-dairy",
+      "price": 1500,
+      "description": "Smooth, chilled yoghurt drink.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_013": {
+      "id": "bar_013",
+      "name": "Heineken",
+      "category_id": "beer",
+      "price": 1500,
+      "description": "Premium lager with a distinctive hoppy aroma. 330ml.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_014": {
+      "id": "bar_014",
+      "name": "Star Lager",
+      "category_id": "beer",
+      "price": 1000,
+      "description": "Nigeria's premium lager beer — crisp, clean, refreshing. 600ml.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_015": {
+      "id": "bar_015",
+      "name": "Trophy Lager",
+      "category_id": "beer",
+      "price": 800,
+      "description": "Light, smooth Nigerian lager. 600ml.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_016": {
+      "id": "bar_016",
+      "name": "Budweiser",
+      "category_id": "beer",
+      "price": 1500,
+      "description": "King of beers — smooth American-style lager. 330ml.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_017": {
+      "id": "bar_017",
+      "name": "Guinness Foreign Extra Stout",
+      "category_id": "stout",
+      "price": 1200,
+      "description": "The iconic dark stout with a rich, roasted flavour and creamy head. 600ml.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_018": {
+      "id": "bar_018",
+      "name": "Origin Stout",
+      "category_id": "stout",
+      "price": 1000,
+      "description": "Dark, full-bodied Nigerian stout with malty richness. 600ml.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_019": {
+      "id": "bar_019",
+      "name": "Red Wine (Glass)",
+      "category_id": "wines",
+      "price": 3500,
+      "description": "A full-bodied red wine — ask your server for today's selection.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_020": {
+      "id": "bar_020",
+      "name": "White Wine (Glass)",
+      "category_id": "wines",
+      "price": 3500,
+      "description": "A crisp, chilled white wine — ask your server for today's selection.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_021": {
+      "id": "bar_021",
+      "name": "Rosé Wine (Glass)",
+      "category_id": "wines",
+      "price": 3500,
+      "description": "A delicate, fruity rosé — light and refreshing.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_022": {
+      "id": "bar_022",
+      "name": "Moët & Chandon Brut",
+      "category_id": "champagne",
+      "price": 45000,
+      "description": "Iconic French Champagne — elegant bubbles with green apple and citrus notes. 750ml.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_023": {
+      "id": "bar_023",
+      "name": "Prosecco",
+      "category_id": "champagne",
+      "price": 15000,
+      "description": "Italian sparkling wine — light, fresh, and festive. 750ml.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_024": {
+      "id": "bar_024",
+      "name": "Johnnie Walker Black Label",
+      "category_id": "whiskey",
+      "price": 4500,
+      "description": "Aged 12 years — rich, complex Scotch whisky with notes of dark fruit and oak. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_025": {
+      "id": "bar_025",
+      "name": "Jameson Irish Whiskey",
+      "category_id": "whiskey",
+      "price": 3500,
+      "description": "Triple-distilled Irish whiskey — smooth, approachable, with hints of vanilla and spice. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_026": {
+      "id": "bar_026",
+      "name": "Jack Daniel's",
+      "category_id": "whiskey",
+      "price": 4000,
+      "description": "Tennessee whiskey — charcoal mellowed, with notes of caramel, oak, and vanilla. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_027": {
+      "id": "bar_027",
+      "name": "Hennessy VS",
+      "category_id": "cognac",
+      "price": 5000,
+      "description": "The world's most recognised Cognac — bold and fruity with a warming finish. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_028": {
+      "id": "bar_028",
+      "name": "Hennessy VSOP",
+      "category_id": "cognac",
+      "price": 7500,
+      "description": "Aged longer than VS — smoother, more complex, with rich spice and dried fruit notes. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_029": {
+      "id": "bar_029",
+      "name": "Remy Martin VSOP",
+      "category_id": "cognac",
+      "price": 7000,
+      "description": "Fine Champagne Cognac — supple, fragrant, and elegantly structured. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_030": {
+      "id": "bar_030",
+      "name": "Absolut Vodka",
+      "category_id": "vodka",
+      "price": 3000,
+      "description": "Swedish premium vodka — clean, smooth, and versatile. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_031": {
+      "id": "bar_031",
+      "name": "Ciroc",
+      "category_id": "vodka",
+      "price": 4500,
+      "description": "French ultra-premium vodka distilled from fine French grapes. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_032": {
+      "id": "bar_032",
+      "name": "Tanqueray",
+      "category_id": "gin",
+      "price": 3500,
+      "description": "Classic London Dry Gin — botanical, juniper-forward, and crisp. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_033": {
+      "id": "bar_033",
+      "name": "Hendrick's",
+      "category_id": "gin",
+      "price": 5000,
+      "description": "Unusual gin infused with rose and cucumber — floral, refreshing, and distinctive. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_034": {
+      "id": "bar_034",
+      "name": "Bacardi White Rum",
+      "category_id": "rum",
+      "price": 3000,
+      "description": "The iconic white rum — light, clean, and perfect for cocktails. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_035": {
+      "id": "bar_035",
+      "name": "Captain Morgan Spiced",
+      "category_id": "rum",
+      "price": 3500,
+      "description": "Smooth spiced rum with warm vanilla and oak undertones. Per measure.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_036": {
+      "id": "bar_036",
+      "name": "Mojito",
+      "category_id": "cocktails",
+      "price": 5000,
+      "description": "Fresh mint, lime juice, sugar, white rum, and soda water — the classic Cuban refresher.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_037": {
+      "id": "bar_037",
+      "name": "Cosmopolitan",
+      "category_id": "cocktails",
+      "price": 5500,
+      "description": "Vodka, triple sec, cranberry juice, and lime — the timeless pink classic.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_038": {
+      "id": "bar_038",
+      "name": "Long Island Iced Tea",
+      "category_id": "cocktails",
+      "price": 7000,
+      "description": "Vodka, gin, rum, tequila, triple sec, lemon juice, and cola — bold and refreshing.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "bar_039": {
+      "id": "bar_039",
+      "name": "Chapman",
+      "category_id": "cocktails",
+      "price": 3000,
+      "description": "Nigeria's beloved mocktail — Fanta, Sprite, Ribena, bitters, cucumber, and lemon over ice.",
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    }
+  }
+}

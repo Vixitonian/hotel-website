@@ -18,10 +18,14 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="menu.html">Menu</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <a href="contact.html" class="btn btn-ghost btn-sm btn-book nav-book">Book Now</a>
+      <div class="cta-pair nav-book">
+        <a href="tel:+2348001234567" class="btn btn-call btn-sm">📞 Call</a>
+        <a href="https://wa.me/2348001234567" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -49,52 +53,39 @@
       <div class="features-grid">
         <div class="feature-item">
           <span class="feature-icon">🌿</span>
-          <div>
-            <h4>Lush Gardens</h4>
-            <p>3 acres of manicured tropical grounds</p>
-          </div>
+          <div><h4>Lush Gardens</h4><p>3 acres of manicured tropical grounds</p></div>
         </div>
         <div class="feature-item">
           <span class="feature-icon">🍽️</span>
-          <div>
-            <h4>Fine Dining</h4>
-            <p>Award-winning cuisine, local &amp; international</p>
-          </div>
+          <div><h4>Fine Dining</h4><p>Award-winning cuisine, local &amp; international</p></div>
         </div>
         <div class="feature-item">
           <span class="feature-icon">🏊</span>
-          <div>
-            <h4>Infinity Pool</h4>
-            <p>Open daily from 6 AM to 10 PM</p>
-          </div>
+          <div><h4>Infinity Pool</h4><p>Open daily from 6 AM to 10 PM</p></div>
         </div>
         <div class="feature-item">
           <span class="feature-icon">✨</span>
-          <div>
-            <h4>Luxury Spa</h4>
-            <p>Holistic treatments &amp; wellness rituals</p>
-          </div>
+          <div><h4>Luxury Spa</h4><p>Holistic treatments &amp; wellness rituals</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Featured Rooms ─────────────────────────────── -->
+  <!-- ── Room Categories Preview ────────────────────── -->
   <section class="section" style="background: var(--ivory);">
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Accommodations</span>
-        <h2>Our Finest Rooms</h2>
+        <h2>Our Room Categories</h2>
         <div class="divider"></div>
-        <p>Every room is a sanctuary — thoughtfully furnished, impeccably appointed, and designed for your deepest comfort.</p>
+        <p>Six distinct categories designed to match every preference — from intimate suites to sprawling luxury rooms.</p>
       </div>
-      <div class="rooms-grid" id="homeRoomsGrid">
-        <div class="loading-state">
-          <div class="spinner"></div>
-          <p>Loading rooms…</p>
+      <div class="category-grid" id="homeCategoryGrid">
+        <div class="loading-state" style="grid-column:1/-1;">
+          <div class="spinner"></div><p>Loading rooms…</p>
         </div>
       </div>
-      <div style="text-align:center; margin-top: 48px;">
+      <div style="text-align:center; margin-top:40px;">
         <a href="rooms.html" class="btn btn-outline">View All Rooms</a>
       </div>
     </div>
@@ -123,12 +114,24 @@
       </div>
       <div class="menu-grid" id="homeMenuGrid">
         <div class="loading-state">
-          <div class="spinner"></div>
-          <p>Loading menu…</p>
+          <div class="spinner"></div><p>Loading menu…</p>
         </div>
       </div>
-      <div style="text-align:center; margin-top: 48px;">
+      <div style="text-align:center; margin-top:48px;">
         <a href="menu.html" class="btn btn-outline">Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact CTA ────────────────────────────────── -->
+  <section class="section" style="background: var(--charcoal2); text-align:center;">
+    <div class="container" style="max-width:600px;">
+      <span class="eyebrow" style="color:var(--gold-lt);">Ready to Visit?</span>
+      <h2 style="color:#fff; margin: 16px 0 8px;">Make a Reservation</h2>
+      <p style="color:rgba(255,255,255,0.6); margin-bottom:32px;">Reach our team directly to book your room or reserve a table. We're available 24 hours a day.</p>
+      <div class="cta-pair" style="justify-content:center;">
+        <a href="tel:+2348001234567" class="btn btn-call" style="font-size:1rem; padding:14px 28px;">📞 Call Now</a>
+        <a href="https://wa.me/2348001234567" class="btn btn-whatsapp" style="font-size:1rem; padding:14px 28px;" target="_blank" rel="noopener">💬 WhatsApp Us</a>
       </div>
     </div>
   </section>
@@ -157,19 +160,20 @@
         <div class="footer-col">
           <h5>Services</h5>
           <ul>
-            <li><a href="#">Airport Transfer</a></li>
-            <li><a href="#">Spa &amp; Wellness</a></li>
-            <li><a href="#">Event Hosting</a></li>
-            <li><a href="#">Business Centre</a></li>
-            <li><a href="#">Concierge</a></li>
+            <li><a href="contact.html">Airport Transfer</a></li>
+            <li><a href="contact.html">Spa &amp; Wellness</a></li>
+            <li><a href="contact.html">Event Hosting</a></li>
+            <li><a href="contact.html">Business Centre</a></li>
+            <li><a href="contact.html">Concierge</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h5>Contact</h5>
           <ul>
             <li><a href="tel:+2348001234567">+234 800 123 4567</a></li>
+            <li><a href="https://wa.me/2348001234567" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:hello@grandeurhotel.ng">hello@grandeurhotel.ng</a></li>
-            <li><a href="#">5 Luxury Ave, Maitama,<br>Abuja, FCT</a></li>
+            <li>5 Luxury Ave, Maitama, Abuja</li>
           </ul>
         </div>
       </div>
@@ -181,93 +185,89 @@
   </footer>
 
   <script>
-    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     });
-
-    // Mobile nav toggle
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('navLinks').classList.toggle('open');
     });
 
-    // Load preview rooms (max 3)
+    const CATEGORY_GRADIENTS = {
+      'prime-suite':  'linear-gradient(135deg,#e8dcc8,#d4c3a0)',
+      'imperial':     'linear-gradient(135deg,#c8d8e8,#a0b8d0)',
+      'platinum':     'linear-gradient(135deg,#d8d8e8,#b8b8d0)',
+      'elite':        'linear-gradient(135deg,#d8e8d8,#a0c8a0)',
+      'verde-suite':  'linear-gradient(135deg,#d0e8d0,#a8d0a8)',
+      'serenity':     'linear-gradient(135deg,#e8e0d0,#d0c0a8)',
+    };
+
+    // Load room categories preview
     fetch('api/rooms.php?action=list')
       .then(r => r.json())
       .then(data => {
-        const grid = document.getElementById('homeRoomsGrid');
-        const rooms = (data.rooms || []).slice(0, 3);
-        if (!rooms.length) {
-          grid.innerHTML = '<div class="empty-state"><div class="icon">🛏️</div><p>No rooms listed yet.</p></div>';
+        const grid = document.getElementById('homeCategoryGrid');
+        const cats  = data.categories || [];
+        const rooms = data.rooms      || [];
+        if (!cats.length) {
+          grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">🛏️</div><p>No rooms listed yet.</p></div>';
           return;
         }
-        grid.innerHTML = rooms.map(r => buildRoomCard(r)).join('');
+        grid.innerHTML = cats.map(cat => {
+          const catRooms = rooms.filter(r => r.category_id === cat.id);
+          const prices   = catRooms.map(r => r.discounted_price || r.price);
+          const minPrice = prices.length ? Math.min(...prices) : null;
+          const priceStr = minPrice ? `From ₦${Number(minPrice).toLocaleString()}` : '';
+          return `
+            <a href="rooms.html?category=${cat.id}" class="category-card" style="text-decoration:none;">
+              <h3>${cat.name}</h3>
+              <p>${cat.description || ''}</p>
+              <div class="category-card-meta">
+                <span class="count">${catRooms.length} room${catRooms.length !== 1 ? 's' : ''}</span>
+                <span class="range">${priceStr}</span>
+              </div>
+            </a>`;
+        }).join('');
       })
       .catch(() => {
-        document.getElementById('homeRoomsGrid').innerHTML =
-          '<div class="empty-state"><div class="icon">🛏️</div><p>Rooms unavailable right now.</p></div>';
+        document.getElementById('homeCategoryGrid').innerHTML =
+          '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">🛏️</div><p>Rooms unavailable right now.</p></div>';
       });
 
-    // Load preview menu (max 4)
+    // Load menu preview (max 4 available items)
     fetch('api/menu.php?action=list')
       .then(r => r.json())
       .then(data => {
-        const grid = document.getElementById('homeMenuGrid');
-        const items = (data.items || []).slice(0, 4);
+        const grid  = document.getElementById('homeMenuGrid');
+        const items = (data.items || []).filter(i => i.available !== false).slice(0, 4);
+        const cats  = data.categories || [];
         if (!items.length) {
           grid.innerHTML = '<div class="empty-state"><div class="icon">🍽️</div><p>Menu items coming soon.</p></div>';
           return;
         }
-        grid.innerHTML = items.map(m => buildMenuCard(m)).join('');
+        grid.innerHTML = items.map(m => {
+          const cat = cats.find(c => c.id === m.category_id);
+          const img = m.image
+            ? `<img src="images/food/${m.image}" alt="${m.name}" loading="lazy" />`
+            : `<div class="placeholder-img">🍽️</div>`;
+          return `
+            <div class="menu-card">
+              <div class="menu-card-img">${img}</div>
+              <div class="menu-card-body">
+                <h4>${m.name}</h4>
+                <p>${(m.description || '').substring(0, 70)}…</p>
+                <div class="menu-card-footer">
+                  <span class="menu-price">₦${Number(m.price).toLocaleString()}</span>
+                  <span class="menu-cat">${cat ? cat.name : ''}</span>
+                </div>
+              </div>
+            </div>`;
+        }).join('');
       })
       .catch(() => {
         document.getElementById('homeMenuGrid').innerHTML =
           '<div class="empty-state"><div class="icon">🍽️</div><p>Menu unavailable right now.</p></div>';
       });
-
-    function buildRoomCard(r) {
-      const img = r.image
-        ? `<img src="images/rooms/${r.image}" alt="${r.name}" loading="lazy" />`
-        : `<div class="placeholder-img">🛏️</div>`;
-      return `
-        <div class="room-card">
-          <div class="room-card-img">${img}<span class="room-badge">${r.type || 'Room'}</span></div>
-          <div class="room-card-body">
-            <h3>${r.name}</h3>
-            <div class="room-meta">
-              <span>👤 ${r.capacity || 2} Guests</span>
-              <span>📐 ${r.size || '—'}</span>
-            </div>
-            <p class="room-desc">${r.description || ''}</p>
-            <div class="room-card-footer">
-              <div class="room-price">
-                <span class="amount">₦${Number(r.price).toLocaleString()}</span>
-                <span class="per">per night</span>
-              </div>
-              <a href="contact.html" class="btn btn-primary btn-sm">Book</a>
-            </div>
-          </div>
-        </div>`;
-    }
-
-    function buildMenuCard(m) {
-      const img = m.image
-        ? `<img src="images/food/${m.image}" alt="${m.name}" loading="lazy" />`
-        : `<div class="placeholder-img">🍽️</div>`;
-      return `
-        <div class="menu-card">
-          <div class="menu-card-img">${img}</div>
-          <div class="menu-card-body">
-            <h4>${m.name}</h4>
-            <p>${m.description || ''}</p>
-            <div class="menu-card-footer">
-              <span class="menu-price">₦${Number(m.price).toLocaleString()}</span>
-              <span class="menu-cat">${m.category || 'Main'}</span>
-            </div>
-          </div>
-        </div>`;
-    }
   </script>
 </body>
 </html>

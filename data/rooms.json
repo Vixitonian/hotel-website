@@ -1,58 +1,306 @@
 {
-  "room_001": {
-    "id": "room_001",
-    "name": "Classic Deluxe Room",
-    "type": "Deluxe",
-    "price": 85000,
-    "capacity": 2,
-    "size": "32 m²",
-    "bed": "King",
-    "description": "Elegant and cosy, the Classic Deluxe features warm tones, a plush king bed, and a marble-clad en-suite bathroom with a soaking tub.",
-    "amenities": ["Free Wi-Fi", "Flat-screen TV", "Air Conditioning", "Mini Bar", "Room Service"],
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
+  "categories": {
+    "prime-suite": {
+      "id": "prime-suite",
+      "name": "Prime Suite",
+      "description": "Elegant suites designed for comfort and style, offering a refined retreat experience.",
+      "order": 1
+    },
+    "imperial": {
+      "id": "imperial",
+      "name": "Imperial",
+      "description": "Grand rooms with a commanding presence, blending timeless luxury with modern comforts.",
+      "order": 2
+    },
+    "platinum": {
+      "id": "platinum",
+      "name": "Platinum",
+      "description": "Exclusive Platinum rooms represent the pinnacle of sophisticated hotel living.",
+      "order": 3
+    },
+    "elite": {
+      "id": "elite",
+      "name": "Elite",
+      "description": "Spacious Elite rooms offering superior amenities and an elevated sense of privacy.",
+      "order": 4
+    },
+    "verde-suite": {
+      "id": "verde-suite",
+      "name": "Verde Suite",
+      "description": "Fresh, garden-inspired suites that bring the tranquility of nature indoors.",
+      "order": 5
+    },
+    "serenity": {
+      "id": "serenity",
+      "name": "Serenity",
+      "description": "Peaceful rooms crafted for restful stays, wrapped in calming tones and thoughtful design.",
+      "order": 6
+    }
   },
-  "room_002": {
-    "id": "room_002",
-    "name": "Superior Garden View",
-    "type": "Superior",
-    "price": 120000,
-    "capacity": 2,
-    "size": "44 m²",
-    "bed": "King",
-    "description": "Wake up to verdant gardens from your private balcony. Spacious interiors blending contemporary design with Nigerian textile accents.",
-    "amenities": ["Private Balcony", "Free Wi-Fi", "Nespresso Machine", "Bathtub & Shower", "Pillow Menu"],
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
-  },
-  "room_003": {
-    "id": "room_003",
-    "name": "Junior Suite",
-    "type": "Suite",
-    "price": 195000,
-    "capacity": 3,
-    "size": "65 m²",
-    "bed": "King",
-    "description": "A separate living area, dining nook, and a master bedroom with floor-to-ceiling windows make this suite a preferred choice for extended stays.",
-    "amenities": ["Separate Living Room", "Dining Area", "Kitchenette", "Walk-in Wardrobe", "Butler Service"],
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
-  },
-  "room_004": {
-    "id": "room_004",
-    "name": "Presidential Suite",
-    "type": "Presidential",
-    "price": 450000,
-    "capacity": 4,
-    "size": "120 m²",
-    "bed": "Super King",
-    "description": "The pinnacle of luxury. Two bedrooms, a grand living room, a private chef's kitchen, and panoramic views across Abuja's skyline await you.",
-    "amenities": ["2 Bedrooms", "Grand Living Room", "Private Kitchen", "Panoramic View", "24hr Butler", "Airport Transfer"],
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
+  "rooms": {
+    "room_101": {
+      "id": "room_101",
+      "number": "101",
+      "category_id": "prime-suite",
+      "price": 75000,
+      "discounted_price": 60000,
+      "description": "A beautifully appointed Prime Suite featuring a plush king bed, warm ambient lighting, and a marble en-suite bathroom. Ideal for couples or solo travellers seeking an intimate luxury experience.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service", "En-suite Bathroom"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_102": {
+      "id": "room_102",
+      "number": "102",
+      "category_id": "prime-suite",
+      "price": 75000,
+      "discounted_price": 60000,
+      "description": "Mirroring the elegance of its neighbour, Room 102 is a Prime Suite offering a serene retreat with premium furnishings and attentive in-room amenities.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service", "En-suite Bathroom"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_201": {
+      "id": "room_201",
+      "number": "201",
+      "category_id": "imperial",
+      "price": 200000,
+      "discounted_price": 185000,
+      "description": "A commanding Imperial room with high ceilings, bespoke furniture, and sweeping city views. Every detail speaks to grandeur and refined taste.",
+      "amenities": ["Super King Bed", "Free Wi-Fi", "Air Conditioning", "55\" Smart TV", "Mini Bar", "Nespresso Machine", "Soaking Tub", "Butler Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_301": {
+      "id": "room_301",
+      "number": "301",
+      "category_id": "imperial",
+      "price": 200000,
+      "discounted_price": 185000,
+      "description": "Positioned on the third floor, Room 301 is an Imperial retreat offering panoramic views, an expansive lounge area, and exclusive butler service.",
+      "amenities": ["Super King Bed", "Free Wi-Fi", "Air Conditioning", "55\" Smart TV", "Mini Bar", "Nespresso Machine", "Soaking Tub", "Butler Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_211": {
+      "id": "room_211",
+      "number": "211",
+      "category_id": "platinum",
+      "price": 215000,
+      "discounted_price": 200000,
+      "description": "The Platinum experience — sophisticated interiors, curated artwork, and world-class amenities make Room 211 one of the hotel's most coveted accommodations.",
+      "amenities": ["Super King Bed", "Free Wi-Fi", "Air Conditioning", "65\" Smart TV", "Full Bar Setup", "Espresso Machine", "Walk-in Wardrobe", "Private Terrace", "24hr Butler"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_311": {
+      "id": "room_311",
+      "number": "311",
+      "category_id": "platinum",
+      "price": 215000,
+      "discounted_price": 200000,
+      "description": "Room 311 is a Platinum-class haven featuring a private terrace, bespoke decor, and the finest bed linen available, ensuring an unrivalled rest.",
+      "amenities": ["Super King Bed", "Free Wi-Fi", "Air Conditioning", "65\" Smart TV", "Full Bar Setup", "Espresso Machine", "Walk-in Wardrobe", "Private Terrace", "24hr Butler"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_204": {
+      "id": "room_204",
+      "number": "204",
+      "category_id": "elite",
+      "price": 170000,
+      "discounted_price": 155000,
+      "description": "An Elite room designed for the discerning guest — generous space, top-tier technology, and luxurious bathroom fittings combine for an exceptional stay.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "50\" Smart TV", "Mini Bar", "Rain Shower", "Pillow Menu", "Evening Turndown"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_304": {
+      "id": "room_304",
+      "number": "304",
+      "category_id": "elite",
+      "price": 170000,
+      "discounted_price": 155000,
+      "description": "Room 304 Elite combines elevated comfort with thoughtful design, featuring premium amenities and a peaceful ambiance ideal for business and leisure alike.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "50\" Smart TV", "Mini Bar", "Rain Shower", "Pillow Menu", "Evening Turndown"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_203": {
+      "id": "room_203",
+      "number": "203",
+      "category_id": "verde-suite",
+      "price": 100000,
+      "discounted_price": 85000,
+      "description": "A Verde Suite immersed in lush garden tones and natural textures, offering a private balcony overlooking the hotel's tropical grounds.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Balcony", "Mini Bar", "Garden View"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_205": {
+      "id": "room_205",
+      "number": "205",
+      "category_id": "verde-suite",
+      "price": 100000,
+      "discounted_price": 85000,
+      "description": "Room 205 Verde Suite offers a calming green sanctuary with garden-facing windows, natural décor accents, and a spacious en-suite.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Balcony", "Mini Bar", "Garden View"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_207": {
+      "id": "room_207",
+      "number": "207",
+      "category_id": "verde-suite",
+      "price": 100000,
+      "discounted_price": 85000,
+      "description": "Nestled in a quiet corner of the second floor, Room 207 is a Verde Suite with a serene balcony perfect for morning coffee or evening relaxation.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Balcony", "Mini Bar", "Garden View"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_303": {
+      "id": "room_303",
+      "number": "303",
+      "category_id": "verde-suite",
+      "price": 100000,
+      "discounted_price": 85000,
+      "description": "Third-floor Verde Suite with elevated garden views, bright interiors, and a refined balcony space for an outdoor retreat.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Balcony", "Mini Bar", "Garden View"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_305": {
+      "id": "room_305",
+      "number": "305",
+      "category_id": "verde-suite",
+      "price": 100000,
+      "discounted_price": 85000,
+      "description": "Room 305 Verde Suite — a lush, restful escape with panoramic garden views, artisan furnishings, and a rejuvenating rain shower.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Balcony", "Mini Bar", "Garden View"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_307": {
+      "id": "room_307",
+      "number": "307",
+      "category_id": "verde-suite",
+      "price": 100000,
+      "discounted_price": 85000,
+      "description": "Tucked on the third floor with a tranquil garden aspect, Room 307 Verde Suite offers a nature-inspired retreat in the heart of the hotel.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Balcony", "Mini Bar", "Garden View"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_202": {
+      "id": "room_202",
+      "number": "202",
+      "category_id": "serenity",
+      "price": 85000,
+      "discounted_price": 70000,
+      "description": "A Serenity room designed for total relaxation — softly lit, immaculately furnished, and wrapped in a palette of soothing neutrals.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_206": {
+      "id": "room_206",
+      "number": "206",
+      "category_id": "serenity",
+      "price": 85000,
+      "discounted_price": 70000,
+      "description": "Room 206 is a Serenity haven offering a peaceful escape from the city, with carefully chosen furnishings and a restful ambiance.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_208": {
+      "id": "room_208",
+      "number": "208",
+      "category_id": "serenity",
+      "price": 85000,
+      "discounted_price": 70000,
+      "description": "Quiet and beautifully appointed, Room 208 Serenity offers a cocoon of calm for guests who value rest above all else.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_209": {
+      "id": "room_209",
+      "number": "209",
+      "category_id": "serenity",
+      "price": 85000,
+      "discounted_price": 70000,
+      "description": "At the end of the second-floor corridor, Room 209 Serenity benefits from exceptional quiet, tasteful décor, and premium sleep amenities.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_302": {
+      "id": "room_302",
+      "number": "302",
+      "category_id": "serenity",
+      "price": 85000,
+      "discounted_price": 70000,
+      "description": "Third-floor Serenity room with elevated views and a calm interior. A perfect base for a restorative stay in Abuja.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_306": {
+      "id": "room_306",
+      "number": "306",
+      "category_id": "serenity",
+      "price": 85000,
+      "discounted_price": 70000,
+      "description": "Room 306 Serenity is a light-filled retreat on the third floor, combining understated luxury with the quiet calm of a true sanctuary.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_308": {
+      "id": "room_308",
+      "number": "308",
+      "category_id": "serenity",
+      "price": 85000,
+      "discounted_price": 70000,
+      "description": "A spacious Serenity room near the staircase terrace, Room 308 offers exceptional comfort with plush bedding and serene décor.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "room_309": {
+      "id": "room_309",
+      "number": "309",
+      "category_id": "serenity",
+      "price": 85000,
+      "discounted_price": 70000,
+      "description": "The last room on the third floor, Room 309 Serenity is a tranquil retreat with soft furnishings, excellent natural light, and superior sound insulation.",
+      "amenities": ["King Bed", "Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Mini Bar", "Room Service"],
+      "images": [],
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    }
   }
 }

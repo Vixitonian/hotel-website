@@ -17,10 +17,14 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="rooms.html" class="active">Rooms</a></li>
+        <li><a href="menu.html">Menu</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <a href="contact.html" class="btn btn-ghost btn-sm nav-book">Book Now</a>
+      <div class="cta-pair nav-book">
+        <a href="tel:+2348001234567" class="btn btn-call btn-sm">📞 Call</a>
+        <a href="https://wa.me/2348001234567" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
       <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -29,28 +33,38 @@
     <div class="container">
       <span class="eyebrow">Accommodations</span>
       <h1>Rooms &amp; Suites</h1>
-      <p>From intimate deluxe rooms to sprawling presidential suites — each space is a world of its own.</p>
+      <p>Six distinct categories, 22 thoughtfully appointed rooms — each a world of its own.</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
 
-      <!-- Filter bar -->
-      <div class="menu-filter" id="roomFilter">
-        <button class="active" data-filter="all">All Rooms</button>
-        <button data-filter="Deluxe">Deluxe</button>
-        <button data-filter="Superior">Superior</button>
-        <button data-filter="Suite">Suite</button>
-        <button data-filter="Presidential">Presidential</button>
+      <!-- Category grid -->
+      <div class="section-header" style="margin-bottom:32px;">
+        <span class="eyebrow">Browse by Category</span>
+        <h2>Choose Your Room Type</h2>
+        <div class="divider"></div>
       </div>
-
-      <div class="rooms-grid" id="roomsGrid">
+      <div class="category-grid" id="categoryGrid">
         <div class="loading-state" style="grid-column:1/-1;">
-          <div class="spinner"></div>
-          <p>Loading rooms…</p>
+          <div class="spinner"></div><p>Loading categories…</p>
         </div>
       </div>
+
+      <!-- Rooms panel (hidden until a category is selected or All clicked) -->
+      <div id="roomsPanel" style="display:none;">
+        <div class="rooms-section-header">
+          <h2 id="roomsPanelTitle">All Rooms</h2>
+          <button class="btn btn-outline btn-sm" id="backToCats">← All Categories</button>
+        </div>
+        <div class="rooms-grid" id="roomsGrid">
+          <div class="loading-state" style="grid-column:1/-1;">
+            <div class="spinner"></div><p>Loading rooms…</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -67,46 +81,232 @@
         <div class="footer-col"><h5>Navigate</h5><ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="menu.html">Menu</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul></div>
         <div class="footer-col"><h5>Contact</h5><ul>
           <li><a href="tel:+2348001234567">+234 800 123 4567</a></li>
+          <li><a href="https://wa.me/2348001234567" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="mailto:hello@grandeurhotel.ng">hello@grandeurhotel.ng</a></li>
         </ul></div>
         <div class="footer-col"><h5>Services</h5><ul>
-          <li><a href="#">Airport Transfer</a></li>
-          <li><a href="#">Spa &amp; Wellness</a></li>
-          <li><a href="#">Event Hosting</a></li>
+          <li><a href="contact.html">Airport Transfer</a></li>
+          <li><a href="contact.html">Spa &amp; Wellness</a></li>
+          <li><a href="contact.html">Event Hosting</a></li>
         </ul></div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Grandeur Hotel &amp; Suites.</span>
+        <span>© 2025 Grandeur Hotel &amp; Suites. All rights reserved.</span>
         <span>Made in Nigeria 🇳🇬</span>
       </div>
     </div>
   </footer>
 
-  <script src="js/rooms.js"></script>
+  <!-- Room detail modal -->
+  <div class="modal-overlay" id="roomModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalRoomName">Room Details</h3>
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('navbar').classList.add('scrolled');
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('navLinks').classList.toggle('open');
     });
 
-    // Filter
-    let allRooms = [];
-    document.querySelectorAll('#roomFilter button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('#roomFilter button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        const filtered = f === 'all' ? allRooms : allRooms.filter(r => r.type === f);
-        renderRooms(filtered);
-      });
+    const PHONE    = '+2348001234567';
+    const WA       = '2348001234567';
+
+    let allRooms      = [];
+    let allCategories = [];
+
+    // ── Fetch data ───────────────────────────────────────────────────
+    async function loadData() {
+      try {
+        const res  = await fetch('api/rooms.php?action=list');
+        const data = await res.json();
+        allCategories = data.categories || [];
+        allRooms      = data.rooms      || [];
+        renderCategories();
+      } catch {
+        document.getElementById('categoryGrid').innerHTML =
+          '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">⚠️</div><p>Could not load rooms. Please try again later.</p></div>';
+      }
+    }
+
+    // ── Render categories ────────────────────────────────────────────
+    function renderCategories() {
+      const grid = document.getElementById('categoryGrid');
+      if (!allCategories.length) {
+        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">🛏️</div><p>No room categories available yet.</p></div>';
+        return;
+      }
+      grid.innerHTML = allCategories.map(cat => {
+        const catRooms = allRooms.filter(r => r.category_id === cat.id);
+        const prices   = catRooms.map(r => r.discounted_price || r.price);
+        const minPrice = prices.length ? Math.min(...prices) : null;
+        const priceStr = minPrice ? `From ₦${Number(minPrice).toLocaleString()}` : '';
+        return `
+          <div class="category-card" data-cat-id="${cat.id}" onclick="showCategory('${cat.id}')">
+            <h3>${cat.name}</h3>
+            <p>${cat.description || ''}</p>
+            <div class="category-card-meta">
+              <span class="count">${catRooms.length} room${catRooms.length !== 1 ? 's' : ''}</span>
+              <span class="range">${priceStr}</span>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    // ── Show rooms for a category ────────────────────────────────────
+    function showCategory(catId) {
+      const cat   = allCategories.find(c => c.id === catId);
+      const rooms = allRooms.filter(r => r.category_id === catId);
+
+      document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+      document.querySelector(`[data-cat-id="${catId}"]`)?.classList.add('active');
+
+      document.getElementById('roomsPanelTitle').textContent = cat ? cat.name : 'Rooms';
+      document.getElementById('roomsPanel').style.display = 'block';
+      document.getElementById('roomsPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      renderRooms(rooms);
+    }
+
+    document.getElementById('backToCats').addEventListener('click', () => {
+      document.getElementById('roomsPanel').style.display = 'none';
+      document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+      document.getElementById('categoryGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    loadRooms().then(rooms => { allRooms = rooms; renderRooms(rooms); });
+    // ── Render room cards ────────────────────────────────────────────
+    function renderRooms(rooms) {
+      const grid = document.getElementById('roomsGrid');
+      if (!rooms.length) {
+        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">🛏️</div><p>No rooms found in this category.</p></div>';
+        return;
+      }
+      grid.innerHTML = rooms.map(r => buildRoomCard(r)).join('');
+    }
+
+    function buildRoomCard(r) {
+      const cat     = allCategories.find(c => c.id === r.category_id);
+      const hasDisc = r.discounted_price && r.discounted_price < r.price;
+      const priceHTML = hasDisc
+        ? `<span class="price-original">₦${Number(r.price).toLocaleString()}</span>
+           <span class="price-discounted">₦${Number(r.discounted_price).toLocaleString()}<span class="per">/ night</span></span>`
+        : `<span class="price-discounted">₦${Number(r.price).toLocaleString()}<span class="per">/ night</span></span>`;
+
+      const availHTML = r.available
+        ? '<span class="avail-badge available">✓ Available</span>'
+        : '<span class="avail-badge unavailable">✕ Unavailable</span>';
+
+      const imgSrc = (r.images && r.images.length)
+        ? `<img src="images/rooms/${r.images[0]}" alt="${r.name}" loading="lazy" />`
+        : `<div class="placeholder-img" style="background:${catGradient(r.category_id)};">🛏️</div>`;
+
+      return `
+        <div class="room-card">
+          <div class="room-card-img">
+            ${imgSrc}
+            <span class="room-badge">${cat ? cat.name : r.category_id}</span>
+          </div>
+          <div class="room-card-body">
+            <span class="room-number-badge">Room ${r.number}</span>
+            <h3>${r.name || cat?.name || 'Room'}</h3>
+            <div class="room-meta" style="margin-bottom:10px;">
+              ${availHTML}
+            </div>
+            <p class="room-desc">${(r.description || '').substring(0, 100)}…</p>
+            <div class="room-card-footer" style="margin-top:16px; align-items:flex-end;">
+              <div class="room-price">${priceHTML}</div>
+              <button class="btn btn-primary btn-sm" onclick="openRoomModal('${r.id}')">View Details</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function catGradient(catId) {
+      const g = {
+        'prime-suite':  'linear-gradient(135deg,#e8dcc8,#d4c3a0)',
+        'imperial':     'linear-gradient(135deg,#c8d8e8,#a0b8d0)',
+        'platinum':     'linear-gradient(135deg,#d8d8e8,#b8b8d0)',
+        'elite':        'linear-gradient(135deg,#d8e8d8,#a0c8a0)',
+        'verde-suite':  'linear-gradient(135deg,#d0e8d0,#a8d0a8)',
+        'serenity':     'linear-gradient(135deg,#e8e0d0,#d0c0a8)',
+      };
+      return g[catId] || 'linear-gradient(135deg,var(--ivory),var(--ivory-dk))';
+    }
+
+    // ── Room modal ───────────────────────────────────────────────────
+    function openRoomModal(roomId) {
+      const r   = allRooms.find(x => x.id === roomId);
+      if (!r) return;
+      const cat     = allCategories.find(c => c.id === r.category_id);
+      const hasDisc = r.discounted_price && r.discounted_price < r.price;
+
+      document.getElementById('modalRoomName').textContent = `Room ${r.number}`;
+
+      const imgHTML = (r.images && r.images.length)
+        ? `<div class="modal-img"><img src="images/rooms/${r.images[0]}" alt="${r.name}" /></div>`
+        : `<div class="modal-img" style="background:${catGradient(r.category_id)};">🛏️</div>`;
+
+      const priceHTML = hasDisc
+        ? `<span class="price-original">₦${Number(r.price).toLocaleString()} / night</span>
+           <span class="price-discounted">₦${Number(r.discounted_price).toLocaleString()}<span class="per">/ night</span></span>
+           <span class="price-badge">DEAL</span>`
+        : `<span class="price-discounted">₦${Number(r.price).toLocaleString()}<span class="per">/ night</span></span>`;
+
+      const amenHTML = (r.amenities || []).map(a => `<span>${a}</span>`).join('');
+      const availHTML = r.available
+        ? '<span class="avail-badge available">✓ Available Now</span>'
+        : '<span class="avail-badge unavailable">✕ Currently Unavailable</span>';
+
+      document.getElementById('modalBody').innerHTML = `
+        ${imgHTML}
+        <div style="margin-bottom:12px;">${availHTML}</div>
+        <p style="font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 4px;">
+          ${cat ? cat.name : ''} · Room ${r.number}
+        </p>
+        <h2 style="font-family:var(--serif);font-size:1.6rem;margin:0 0 12px;">${r.name || (cat ? cat.name : 'Room')}</h2>
+        <div class="modal-price-row">${priceHTML}</div>
+        <p style="color:var(--muted);line-height:1.7;margin:16px 0;">${r.description || ''}</p>
+        ${amenHTML ? `<h4 style="font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px;">Amenities</h4>
+        <div class="modal-amenities">${amenHTML}</div>` : ''}
+        <div class="modal-cta">
+          <a href="tel:${PHONE}" class="btn btn-call">📞 Call to Book</a>
+          <a href="https://wa.me/${WA}?text=${encodeURIComponent(`Hi, I'd like to book Room ${r.number} (${cat?.name || ''}).`)}"
+             class="btn btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>`;
+
+      document.getElementById('roomModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('roomModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('roomModal').addEventListener('click', e => {
+      if (e.target === document.getElementById('roomModal')) closeModal();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Check URL param for pre-selected category
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('category');
+
+    loadData().then(() => {
+      if (catParam) showCategory(catParam);
+    });
   </script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+{
+  "admin": {
+    "password": "grandeur2025"
+  },
+  "hotel": {
+    "name": "Grandeur Hotel & Suites",
+    "phone": "+234 800 123 4567",
+    "whatsapp": "+234 800 123 4567",
+    "email": "hello@grandeurhotel.ng",
+    "address": "5 Luxury Avenue, Maitama District, Abuja, FCT, Nigeria",
+    "social": {
+      "instagram": "#",
+      "facebook": "#",
+      "twitter": "#",
+      "whatsapp": "#"
+    }
+  }
+}

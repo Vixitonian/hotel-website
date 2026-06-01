@@ -1,62 +1,321 @@
 {
-  "item_001": {
-    "id": "item_001",
-    "name": "Grandeur Full Breakfast",
-    "category": "Breakfast",
-    "price": 12500,
-    "description": "Eggs your way, grilled tomatoes, sautéed mushrooms, crispy turkey bacon, toasted sourdough, and freshly squeezed orange juice.",
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
+  "categories": {
+    "rice-dishes": {
+      "id": "rice-dishes",
+      "name": "Rice Dishes",
+      "order": 1
+    },
+    "pasta-beans": {
+      "id": "pasta-beans",
+      "name": "Pasta & Beans",
+      "order": 2
+    },
+    "breakfast-light": {
+      "id": "breakfast-light",
+      "name": "Breakfast & Light Meals",
+      "order": 3
+    },
+    "soups": {
+      "id": "soups",
+      "name": "Soups",
+      "order": 4
+    },
+    "protein-sides": {
+      "id": "protein-sides",
+      "name": "Protein & Sides",
+      "order": 5
+    },
+    "swallow": {
+      "id": "swallow",
+      "name": "Swallow",
+      "order": 6
+    },
+    "beverages": {
+      "id": "beverages",
+      "name": "Beverages",
+      "order": 7
+    }
   },
-  "item_002": {
-    "id": "item_002",
-    "name": "Suya Skewers",
-    "category": "Starters",
-    "price": 8500,
-    "description": "Tender beef marinated in our signature suya spice blend, grilled over an open flame and served with pickled onion and tomato salsa.",
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
-  },
-  "item_003": {
-    "id": "item_003",
-    "name": "Egusi Soup & Pounded Yam",
-    "category": "Main",
-    "price": 18000,
-    "description": "A rich, aromatic Egusi soup slow-cooked with assorted meats and leafy vegetables, served with silky hand-pounded yam.",
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
-  },
-  "item_004": {
-    "id": "item_004",
-    "name": "Pan-Seared Tilapia",
-    "category": "Main",
-    "price": 22000,
-    "description": "Fresh Tilapia fillet seared to golden perfection, served on a bed of jollof coconut rice with grilled plantain and herb butter.",
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
-  },
-  "item_005": {
-    "id": "item_005",
-    "name": "Chin-Chin Cheesecake",
-    "category": "Dessert",
-    "price": 7500,
-    "description": "A modern Nigerian twist on a classic — creamy vanilla cheesecake on a buttery chin-chin crust, drizzled with tiger nut caramel.",
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
-  },
-  "item_006": {
-    "id": "item_006",
-    "name": "Zobo Royal",
-    "category": "Drinks",
-    "price": 4500,
-    "description": "Hibiscus flowers steeped with ginger, cloves, and a hint of pineapple — refreshingly served over crushed ice with a sugared rim.",
-    "image": null,
-    "available": true,
-    "created_at": "2025-01-01T08:00:00+01:00"
+  "items": {
+    "menu_001": {
+      "id": "menu_001",
+      "name": "Jollof Rice",
+      "category_id": "rice-dishes",
+      "price": 4500,
+      "description": "Smoky, richly seasoned Nigerian jollof rice cooked with plum tomatoes, peppers, and a blend of aromatic spices.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_002": {
+      "id": "menu_002",
+      "name": "Fried Rice",
+      "category_id": "rice-dishes",
+      "price": 4500,
+      "description": "Stir-fried rice with mixed vegetables, eggs, and a savoury seasoning blend, served Nigerian-style.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_003": {
+      "id": "menu_003",
+      "name": "White Rice",
+      "category_id": "rice-dishes",
+      "price": 3500,
+      "description": "Perfectly steamed long-grain white rice, a versatile accompaniment to any protein or sauce.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_004": {
+      "id": "menu_004",
+      "name": "Coconut Rice",
+      "category_id": "rice-dishes",
+      "price": 5000,
+      "description": "Fragrant rice slow-cooked in fresh coconut milk with a hint of bay leaf and seasoning.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_005": {
+      "id": "menu_005",
+      "name": "Pasta",
+      "category_id": "pasta-beans",
+      "price": 4000,
+      "description": "Al dente pasta tossed in a rich tomato-based Nigerian sauce with assorted vegetables and seasoning.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_006": {
+      "id": "menu_006",
+      "name": "Beans",
+      "category_id": "pasta-beans",
+      "price": 3500,
+      "description": "Slowly cooked honey beans in a spiced palm oil base — a classic Nigerian comfort dish.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_007": {
+      "id": "menu_007",
+      "name": "Moi Moi",
+      "category_id": "pasta-beans",
+      "price": 1500,
+      "description": "Steamed bean pudding blended with onions, peppers, and seasoning. A beloved Nigerian staple.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_008": {
+      "id": "menu_008",
+      "name": "Grandeur Full Breakfast",
+      "category_id": "breakfast-light",
+      "price": 12500,
+      "description": "Eggs your way, grilled tomatoes, sautéed mushrooms, crispy turkey bacon, toasted sourdough, and freshly squeezed orange juice.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_009": {
+      "id": "menu_009",
+      "name": "Akara",
+      "category_id": "breakfast-light",
+      "price": 1500,
+      "description": "Crispy deep-fried bean cakes seasoned with pepper and onion — a classic Nigerian breakfast favourite.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_010": {
+      "id": "menu_010",
+      "name": "Pap (Akamu)",
+      "category_id": "breakfast-light",
+      "price": 1500,
+      "description": "Smooth, lightly fermented cornmeal porridge served warm, often paired with akara or moi moi.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_011": {
+      "id": "menu_011",
+      "name": "Egusi Soup",
+      "category_id": "soups",
+      "price": 6000,
+      "description": "Rich, aromatic ground melon seed soup slow-cooked with assorted meats, smoked fish, and leafy vegetables.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_012": {
+      "id": "menu_012",
+      "name": "Ogbono Soup",
+      "category_id": "soups",
+      "price": 6000,
+      "description": "Draw soup made from ground ogbono seeds, palm oil, and assorted proteins — full-bodied and deeply satisfying.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_013": {
+      "id": "menu_013",
+      "name": "Pepper Soup",
+      "category_id": "soups",
+      "price": 5500,
+      "description": "A light, fiery broth of choice protein simmered with native pepper soup spices. Available with fish, goat, or chicken.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_014": {
+      "id": "menu_014",
+      "name": "Ofe Onugbu (Bitter Leaf Soup)",
+      "category_id": "soups",
+      "price": 6000,
+      "description": "An Igbo classic — bitter leaf and cocoyam-thickened soup with assorted meat and stockfish.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_015": {
+      "id": "menu_015",
+      "name": "Grilled Chicken",
+      "category_id": "protein-sides",
+      "price": 5500,
+      "description": "Whole chicken leg marinated in suya-spiced blend, char-grilled and served with sliced onions and tomato.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_016": {
+      "id": "menu_016",
+      "name": "Fried Chicken",
+      "category_id": "protein-sides",
+      "price": 5500,
+      "description": "Tender, seasoned chicken pieces coated in a light batter and deep-fried to golden perfection.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_017": {
+      "id": "menu_017",
+      "name": "Beef",
+      "category_id": "protein-sides",
+      "price": 4500,
+      "description": "Slow-cooked tender beef in a spiced broth, finished in the oven for a satisfying caramelised exterior.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_018": {
+      "id": "menu_018",
+      "name": "Fish",
+      "category_id": "protein-sides",
+      "price": 6500,
+      "description": "Fresh whole fish seasoned with native spices and either grilled or fried. Available in tilapia or mackerel.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_019": {
+      "id": "menu_019",
+      "name": "Plantain",
+      "category_id": "protein-sides",
+      "price": 2000,
+      "description": "Ripe plantain slices fried to a golden caramel finish — sweet, soft, and utterly irresistible.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_020": {
+      "id": "menu_020",
+      "name": "Salad",
+      "category_id": "protein-sides",
+      "price": 2500,
+      "description": "Fresh garden salad with lettuce, cucumber, tomatoes, carrots, and a choice of dressing.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_021": {
+      "id": "menu_021",
+      "name": "Pounded Yam",
+      "category_id": "swallow",
+      "price": 3500,
+      "description": "Silky hand-pounded yam — the perfect complement to any Grandeur soup.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_022": {
+      "id": "menu_022",
+      "name": "Eba (Garri)",
+      "category_id": "swallow",
+      "price": 2500,
+      "description": "Smooth cassava-based swallow, a staple of Nigerian cuisine, best paired with any of our soups.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_023": {
+      "id": "menu_023",
+      "name": "Semolina",
+      "category_id": "swallow",
+      "price": 3000,
+      "description": "Finely milled semolina swallow — smooth, light, and ideal with any of our signature soups.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_024": {
+      "id": "menu_024",
+      "name": "Amala",
+      "category_id": "swallow",
+      "price": 3000,
+      "description": "Dark, velvety yam flour swallow — a Yoruba classic that pairs beautifully with ewedu or gbegiri.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_025": {
+      "id": "menu_025",
+      "name": "Chapman",
+      "category_id": "beverages",
+      "price": 2000,
+      "description": "Nigeria's beloved party cocktail — a chilled blend of Fanta, Sprite, Ribena, and Angostura bitters over ice.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_026": {
+      "id": "menu_026",
+      "name": "Zobo Royal",
+      "category_id": "beverages",
+      "price": 1500,
+      "description": "Hibiscus flowers steeped with ginger, cloves, and pineapple — refreshingly served over crushed ice.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_027": {
+      "id": "menu_027",
+      "name": "Fresh Juice",
+      "category_id": "beverages",
+      "price": 2500,
+      "description": "Freshly pressed seasonal fruit juice. Ask your server for today's selection.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    },
+    "menu_028": {
+      "id": "menu_028",
+      "name": "Water",
+      "category_id": "beverages",
+      "price": 500,
+      "description": "Chilled still or sparkling mineral water.",
+      "image": null,
+      "available": true,
+      "created_at": "2025-01-01T08:00:00+01:00"
+    }
   }
 }

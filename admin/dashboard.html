@@ -15,7 +15,7 @@
       <span class="tagline">Admin</span>
     </a>
     <span style="color:rgba(255,255,255,0.3); flex:1;"></span>
-    <a href="../index.html" class="btn btn-ghost btn-sm" style="margin-right:8px;">← View Site</a>
+    <a href="../index.html" class="btn btn-ghost btn-sm" style="margin-right:8px;" target="_blank">← View Site</a>
     <button id="logoutBtn" class="btn btn-ghost btn-sm">Sign Out</button>
   </header>
 
@@ -24,89 +24,89 @@
     <!-- Sidebar -->
     <aside class="admin-sidebar">
       <nav>
-        <a href="#overview" class="active" data-section="overview">
-          <span class="icon">📊</span> Overview
-        </a>
-        <a href="#rooms" data-section="rooms">
-          <span class="icon">🛏️</span> Rooms
-        </a>
-        <a href="#menu" data-section="menu">
-          <span class="icon">🍽️</span> Menu
-        </a>
+        <a href="#overview" class="active" data-section="overview"><span class="icon">📊</span> Overview</a>
+        <a href="#rooms"    data-section="rooms">   <span class="icon">🛏️</span> Rooms</a>
+        <a href="#menu"     data-section="menu">    <span class="icon">🍽️</span> Restaurant Menu</a>
+        <a href="#bar"      data-section="bar">     <span class="icon">🍸</span> Bar Menu</a>
+        <a href="#settings" data-section="settings"><span class="icon">⚙️</span> Settings</a>
       </nav>
     </aside>
 
     <!-- Main content -->
     <main class="admin-content">
 
-      <!-- ── Overview ─────────────────────────────────── -->
+      <!-- ── Overview ─────────────────────────────────────────────── -->
       <div id="section-overview" class="admin-section">
         <div class="admin-page-header">
           <h1>Dashboard</h1>
           <span style="font-size:0.82rem; color:var(--muted);" id="currentDate"></span>
         </div>
-        <div class="stats-cards" id="overviewStats">
-          <div class="stat-card">
-            <div class="stat-icon">🛏️</div>
-            <div><div class="stat-value" id="statRooms">—</div><div class="stat-label">Rooms</div></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">🍽️</div>
-            <div><div class="stat-value" id="statMenuItems">—</div><div class="stat-label">Menu Items</div></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">💰</div>
-            <div><div class="stat-value" id="statLowestRoom">—</div><div class="stat-label">From (per night)</div></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">⭐</div>
-            <div><div class="stat-value">5.0</div><div class="stat-label">Avg. Rating</div></div>
-          </div>
+        <div class="stats-cards">
+          <div class="stat-card"><div class="stat-icon">🛏️</div><div><div class="stat-value" id="statRooms">—</div><div class="stat-label">Rooms</div></div></div>
+          <div class="stat-card"><div class="stat-icon">🍽️</div><div><div class="stat-value" id="statMenuItems">—</div><div class="stat-label">Menu Items</div></div></div>
+          <div class="stat-card"><div class="stat-icon">🍸</div><div><div class="stat-value" id="statBarItems">—</div><div class="stat-label">Bar Items</div></div></div>
+          <div class="stat-card"><div class="stat-icon">💰</div><div><div class="stat-value" id="statLowestRoom">—</div><div class="stat-label">From (per night)</div></div></div>
         </div>
         <div class="admin-card">
           <div class="admin-card-header"><h3>Quick Actions</h3></div>
           <div class="admin-card-body" style="display:flex; gap:12px; flex-wrap:wrap;">
             <button class="btn btn-primary" onclick="showSection('rooms')">+ Add Room</button>
-            <button class="btn btn-primary" onclick="showSection('menu')">+ Add Menu Item</button>
-            <a href="../rooms.html" target="_blank" class="btn btn-outline">View Rooms Page</a>
-            <a href="../menu.html" target="_blank" class="btn btn-outline">View Menu Page</a>
+            <button class="btn btn-primary" onclick="showSection('menu')">+ Menu Item</button>
+            <button class="btn btn-primary" onclick="showSection('bar')">+ Bar Item</button>
+            <a href="../rooms.html" target="_blank" class="btn btn-outline">View Rooms</a>
+            <a href="../menu.html"  target="_blank" class="btn btn-outline">View Menu</a>
+            <a href="../bar.html"   target="_blank" class="btn btn-outline">View Bar Menu</a>
           </div>
         </div>
       </div>
 
-      <!-- ── Rooms ───────────────────────────────────── -->
+      <!-- ── Rooms ─────────────────────────────────────────────────── -->
       <div id="section-rooms" class="admin-section" style="display:none;">
-        <div class="admin-page-header">
-          <h1>Rooms</h1>
+        <div class="admin-page-header"><h1>Rooms</h1></div>
+
+        <!-- Room categories -->
+        <div class="admin-card" style="margin-bottom:24px;">
+          <div class="admin-card-header">
+            <h3>Room Categories</h3>
+            <button class="btn btn-primary btn-sm" onclick="openCategoryModal('rooms')">+ Add Category</button>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <div id="roomCategoriesWrap"><div class="loading-state"><div class="spinner"></div><p>Loading…</p></div></div>
+          </div>
         </div>
 
-        <!-- Add Room Form -->
-        <div class="admin-card" style="margin-bottom:32px;">
-          <div class="admin-card-header">
-            <h3>Add New Room</h3>
-          </div>
+        <!-- Add/Edit Room Form -->
+        <div class="admin-card" style="margin-bottom:24px;">
+          <div class="admin-card-header"><h3>Add New Room</h3></div>
           <div class="admin-card-body">
             <div id="roomFormAlert"></div>
             <form id="addRoomForm" class="admin-form" enctype="multipart/form-data">
               <div class="form-row">
                 <div class="form-group">
-                  <label>Room Name *</label>
-                  <input type="text" name="name" placeholder="e.g. Ocean Suite" required />
+                  <label>Room Number *</label>
+                  <input type="text" name="number" placeholder="e.g. 101" required />
                 </div>
                 <div class="form-group">
-                  <label>Room Type *</label>
-                  <select name="type" required>
-                    <option value="Deluxe">Deluxe</option>
-                    <option value="Superior">Superior</option>
-                    <option value="Suite">Suite</option>
-                    <option value="Presidential">Presidential</option>
-                  </select>
+                  <label>Room Name</label>
+                  <input type="text" name="name" placeholder="e.g. Prime Suite Room 101" />
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
+                  <label>Category *</label>
+                  <select name="category_id" id="addRoomCategory" required>
+                    <option value="">Loading categories…</option>
+                  </select>
+                </div>
+                <div class="form-group">
                   <label>Price per Night (₦) *</label>
-                  <input type="number" name="price" placeholder="85000" min="0" required />
+                  <input type="number" name="price" placeholder="75000" min="0" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Discounted Price (₦)</label>
+                  <input type="number" name="discounted_price" placeholder="60000" min="0" />
                 </div>
                 <div class="form-group">
                   <label>Capacity (guests)</label>
@@ -146,31 +146,39 @@
           </div>
         </div>
 
-        <!-- Rooms Table -->
+        <!-- Rooms table -->
         <div class="admin-card">
           <div class="admin-card-header">
             <h3>All Rooms</h3>
-            <button class="btn btn-outline btn-sm" onclick="loadRoomsTable()">↻ Refresh</button>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <select id="roomCategoryFilter" onchange="filterRoomsTable()" style="padding:6px 10px;border:1px solid var(--border);border-radius:2px;font-size:0.82rem;">
+                <option value="">All Categories</option>
+              </select>
+              <button class="btn btn-outline btn-sm" onclick="loadRoomsTable()">↻ Refresh</button>
+            </div>
           </div>
           <div class="admin-card-body" style="padding:0;">
-            <div id="roomsTableWrap">
-              <div class="loading-state"><div class="spinner"></div><p>Loading…</p></div>
-            </div>
+            <div id="roomsTableWrap"><div class="loading-state"><div class="spinner"></div><p>Loading…</p></div></div>
           </div>
         </div>
       </div>
 
-      <!-- ── Menu ────────────────────────────────────── -->
+      <!-- ── Restaurant Menu ───────────────────────────────────────── -->
       <div id="section-menu" class="admin-section" style="display:none;">
-        <div class="admin-page-header">
-          <h1>Menu</h1>
+        <div class="admin-page-header"><h1>Restaurant Menu</h1></div>
+
+        <div class="admin-card" style="margin-bottom:24px;">
+          <div class="admin-card-header">
+            <h3>Menu Categories</h3>
+            <button class="btn btn-primary btn-sm" onclick="openCategoryModal('menu')">+ Add Category</button>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <div id="menuCategoriesWrap"><div class="loading-state"><div class="spinner"></div><p>Loading…</p></div></div>
+          </div>
         </div>
 
-        <!-- Add Menu Item Form -->
-        <div class="admin-card" style="margin-bottom:32px;">
-          <div class="admin-card-header">
-            <h3>Add Menu Item</h3>
-          </div>
+        <div class="admin-card" style="margin-bottom:24px;">
+          <div class="admin-card-header"><h3>Add Menu Item</h3></div>
           <div class="admin-card-body">
             <div id="menuFormAlert"></div>
             <form id="addMenuForm" class="admin-form" enctype="multipart/form-data">
@@ -181,18 +189,14 @@
                 </div>
                 <div class="form-group">
                   <label>Category *</label>
-                  <select name="category" required>
-                    <option value="Breakfast">Breakfast</option>
-                    <option value="Starters">Starters</option>
-                    <option value="Main" selected>Main Course</option>
-                    <option value="Dessert">Dessert</option>
-                    <option value="Drinks">Drinks</option>
+                  <select name="category_id" id="addMenuCategory" required>
+                    <option value="">Loading categories…</option>
                   </select>
                 </div>
               </div>
               <div class="form-group">
                 <label>Price (₦) *</label>
-                <input type="number" name="price" placeholder="12000" min="0" required />
+                <input type="number" name="price" placeholder="4500" min="0" required />
               </div>
               <div class="form-group">
                 <label>Description</label>
@@ -207,16 +211,105 @@
           </div>
         </div>
 
-        <!-- Menu Table -->
         <div class="admin-card">
           <div class="admin-card-header">
             <h3>All Menu Items</h3>
-            <button class="btn btn-outline btn-sm" onclick="loadMenuTable()">↻ Refresh</button>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <select id="menuCategoryFilter" onchange="filterMenuTable()" style="padding:6px 10px;border:1px solid var(--border);border-radius:2px;font-size:0.82rem;">
+                <option value="">All Categories</option>
+              </select>
+              <button class="btn btn-outline btn-sm" onclick="loadMenuTable()">↻ Refresh</button>
+            </div>
           </div>
           <div class="admin-card-body" style="padding:0;">
-            <div id="menuTableWrap">
-              <div class="loading-state"><div class="spinner"></div><p>Loading…</p></div>
+            <div id="menuTableWrap"><div class="loading-state"><div class="spinner"></div><p>Loading…</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Bar Menu ──────────────────────────────────────────────── -->
+      <div id="section-bar" class="admin-section" style="display:none;">
+        <div class="admin-page-header"><h1>Bar Menu</h1></div>
+
+        <div class="admin-card" style="margin-bottom:24px;">
+          <div class="admin-card-header">
+            <h3>Bar Categories</h3>
+            <button class="btn btn-primary btn-sm" onclick="openCategoryModal('bar')">+ Add Category</button>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <div id="barCategoriesWrap"><div class="loading-state"><div class="spinner"></div><p>Loading…</p></div></div>
+          </div>
+        </div>
+
+        <div class="admin-card" style="margin-bottom:24px;">
+          <div class="admin-card-header"><h3>Add Bar Item</h3></div>
+          <div class="admin-card-body">
+            <div id="barFormAlert"></div>
+            <form id="addBarForm" class="admin-form" enctype="multipart/form-data">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Item Name *</label>
+                  <input type="text" name="name" placeholder="e.g. Heineken" required />
+                </div>
+                <div class="form-group">
+                  <label>Category *</label>
+                  <select name="category_id" id="addBarCategory" required>
+                    <option value="">Loading categories…</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Price (₦) *</label>
+                <input type="number" name="price" placeholder="1500" min="0" required />
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" placeholder="Describe the drink…"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Item</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>All Bar Items</h3>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <select id="barCategoryFilter" onchange="filterBarTable()" style="padding:6px 10px;border:1px solid var(--border);border-radius:2px;font-size:0.82rem;">
+                <option value="">All Categories</option>
+              </select>
+              <button class="btn btn-outline btn-sm" onclick="loadBarTable()">↻ Refresh</button>
             </div>
+          </div>
+          <div class="admin-card-body" style="padding:0;">
+            <div id="barTableWrap"><div class="loading-state"><div class="spinner"></div><p>Loading…</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Settings ──────────────────────────────────────────────── -->
+      <div id="section-settings" class="admin-section" style="display:none;">
+        <div class="admin-page-header"><h1>Settings</h1></div>
+
+        <div class="admin-card">
+          <div class="admin-card-header"><h3>Change Admin Password</h3></div>
+          <div class="admin-card-body">
+            <div id="settingsAlert"></div>
+            <form id="passwordForm" class="admin-form">
+              <div class="form-group">
+                <label>Current Password</label>
+                <input type="password" name="current_password" placeholder="••••••••" required />
+              </div>
+              <div class="form-group">
+                <label>New Password</label>
+                <input type="password" name="new_password" placeholder="Min. 8 characters" required minlength="8" />
+              </div>
+              <div class="form-group">
+                <label>Confirm New Password</label>
+                <input type="password" name="confirm_password" placeholder="Repeat new password" required />
+              </div>
+              <button type="submit" class="btn btn-primary">Update Password</button>
+            </form>
           </div>
         </div>
       </div>
@@ -224,9 +317,20 @@
     </main>
   </div>
 
+  <!-- ── Admin Edit Modal ──────────────────────────────────────────── -->
+  <div class="admin-modal-overlay" id="adminModal">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3 id="adminModalTitle">Edit</h3>
+        <button class="modal-close" onclick="closeAdminModal()">✕</button>
+      </div>
+      <div class="admin-modal-body" id="adminModalBody"></div>
+      <div class="admin-modal-footer" id="adminModalFooter"></div>
+    </div>
+  </div>
+
   <script src="admin.js"></script>
   <script>
-    // Auth guard
     if (sessionStorage.getItem('admin_auth') !== 'true') {
       window.location.href = 'index.html';
     }
@@ -239,7 +343,6 @@
     document.getElementById('currentDate').textContent =
       new Date().toLocaleDateString('en-NG', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
-    // Sidebar navigation
     document.querySelectorAll('.admin-sidebar nav a').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -252,12 +355,12 @@
       document.querySelectorAll('.admin-sidebar nav a').forEach(a => a.classList.remove('active'));
       document.getElementById('section-' + name).style.display = 'block';
       document.querySelector(`[data-section="${name}"]`)?.classList.add('active');
-      if (name === 'rooms')    loadRoomsTable();
-      if (name === 'menu')     loadMenuTable();
       if (name === 'overview') loadOverviewStats();
+      if (name === 'rooms')    loadRoomsSection();
+      if (name === 'menu')     loadMenuSection();
+      if (name === 'bar')      loadBarSection();
     }
 
-    // Init
     loadOverviewStats();
   </script>
 </body>
