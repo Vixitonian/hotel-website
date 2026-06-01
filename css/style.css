@@ -21,7 +21,7 @@
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans:  'Jost', sans-serif;
 
-  --nav-h: 80px;
+  --nav-h: 88px;
   --radius: 2px;
   --trans: 0.35s cubic-bezier(0.4,0,0.2,1);
 }
@@ -170,7 +170,7 @@ p { max-width: 65ch; }
 }
 
 .nav-logo-img {
-  height: 56px;
+  height: 68px;
   width: auto;
   display: block;
   filter: brightness(0) invert(1);
@@ -1046,14 +1046,10 @@ footer {
   .stats-cards { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 960px) {
-  .contact-cta-grid { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 768px) {
-  :root { --nav-h: 70px; }
+  :root { --nav-h: 76px; }
 
-  .nav-logo-img { height: 44px; }
+  .nav-logo-img { height: 56px; }
 
   .nav-links { display: none; flex-direction: column; position: fixed;
     top: var(--nav-h); left: 0; right: 0; background: var(--charcoal2);
@@ -1260,7 +1256,10 @@ footer {
    CONTACT PAGE (no form version)
 ───────────────────────────────────────────────────────────────────────── */
 .contact-cta-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
 }
 .contact-cta-card {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
